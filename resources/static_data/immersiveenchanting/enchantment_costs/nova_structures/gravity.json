@@ -1,0 +1,32 @@
+{
+  "enabled": true,
+  "levels": {
+    "1": [
+      {
+        "item_cost": {
+          "item": "minecraft:water_bucket",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "2": [
+      {
+        "item_cost": {
+          "item": "minecraft:bell",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "3": [
+      {
+        "item_cost": {
+          "item": "minecraft:sticky_piston",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ]
+  }
+}

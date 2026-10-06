@@ -1,0 +1,32 @@
+{
+  "enabled": true,
+  "levels": {
+    "1": [
+      {
+        "item_cost": {
+          "item": "minecraft:chest",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "2": [
+      {
+        "item_cost": {
+          "item": "create:fluid_tank",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "3": [
+      {
+        "item_cost": {
+          "item": "minecraft:ender_chest",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ]
+  }
+}

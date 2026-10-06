@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "levels": {
+    "1": [
+      {
+        "item_cost": {
+          "item": "touhou_little_maid:wireless_io",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ]
+  }
+}

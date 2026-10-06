@@ -1,0 +1,32 @@
+{
+  "enabled": true,
+  "levels": {
+    "1": [
+      {
+        "item_cost": {
+          "item": "minecraft:flint_and_steel",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "2": [
+      {
+        "item_cost": {
+          "item": "minecraft:gunpowder",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "3": [
+      {
+        "item_cost": {
+          "item": "minecraft:tnt",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ]
+  }
+}

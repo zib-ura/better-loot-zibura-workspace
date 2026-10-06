@@ -1,0 +1,50 @@
+{
+  "enabled": true,
+  "levels": {
+    "1": [
+      {
+        "item_cost": {
+          "item": "minecraft:iron_ingot",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "2": [
+      {
+        "item_cost": {
+          "item": "minecraft:gold_ingot",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "3": [
+      {
+        "item_cost": {
+          "item": "minecraft:iron_block",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "4": [
+      {
+        "item_cost": {
+          "item": "minecraft:anvil",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "5": [
+      {
+        "item_cost": {
+          "item": "minecraft:gold_block",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ]
+  }
+}

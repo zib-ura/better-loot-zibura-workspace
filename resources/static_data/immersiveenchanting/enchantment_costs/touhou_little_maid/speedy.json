@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "levels": {
+    "1": [
+      {
+        "item_cost": {
+          "item": "touhou_little_maid:picnic_basket",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "2": [
+      {
+        "item_cost": {
+          "item": "touhou_little_maid:maid_bed",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ]
+  }
+}

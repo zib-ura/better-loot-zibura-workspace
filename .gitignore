@@ -1,0 +1,23 @@
+### Better Loot Zibura Workspace ###
+
+# IDE
+.idea/
+
+# Generated mod resources
+/generated/
+
+# Generated datapacks
+/datapacks/
+
+# Build/release artifacts
+/Better Loot Builds/
+
+# Separate Git repository + worktrees
+/projects/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Structure source/cache - do not version
+/resources/structure/

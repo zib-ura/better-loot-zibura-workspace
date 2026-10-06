@@ -1,0 +1,41 @@
+{
+  "enabled": true,
+  "levels": {
+    "1": [
+      {
+        "item_cost": {
+          "item": "touhou_little_maid:wchess",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "2": [
+      {
+        "item_cost": {
+          "item": "touhou_little_maid:cchess",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "3": [
+      {
+        "item_cost": {
+          "item": "touhou_little_maid:gomoku",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ],
+    "4": [
+      {
+        "item_cost": {
+          "item": "touhou_little_maid:computer",
+          "count": 1
+        },
+        "xp_levels": 0
+      }
+    ]
+  }
+}
