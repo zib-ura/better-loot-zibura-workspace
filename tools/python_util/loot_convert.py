@@ -261,6 +261,166 @@ class JSObjectParser:
             return None
 
 
+
+# ----------------- Matrix DSL expansion -----------------
+def _resolve_dsl_reference(value, all_vars):
+    """Resolve top-level const references only inside matrix DSL metadata."""
+    if isinstance(value, str) and value in all_vars:
+        return all_vars[value]
+    return value
+
+
+def _format_matrix_string(value, row, prefix):
+    if not isinstance(value, str):
+        return value
+    return value.replace("{row}", str(row)).replace("{prefix}", str(prefix))
+
+
+def _expand_weight_matrix(name, config, all_vars):
+    rows = _resolve_dsl_reference(config.get("rows"), all_vars)
+    columns = _resolve_dsl_reference(config.get("columns"), all_vars)
+    weights = _resolve_dsl_reference(config.get("weights"), all_vars)
+    pattern = config.get("outputPattern")
+    prefix = config.get("prefix", "")
+    if not isinstance(rows, list) or not isinstance(columns, list) or not isinstance(weights, list) or not isinstance(pattern, str):
+        raise ValueError(f"{name}: invalid weight matrix schema")
+    if len(rows) != len(weights):
+        raise ValueError(f"{name}: rows={len(rows)} but weight rows={len(weights)}")
+    result = {}
+    for row, row_weights in zip(rows, weights):
+        if not isinstance(row_weights, list) or len(row_weights) != len(columns):
+            raise ValueError(f"{name}/{row}: weight count does not match columns")
+        groups = []
+        for column, weight in zip(columns, row_weights):
+            if not isinstance(column, dict):
+                raise ValueError(f"{name}: every column must be an object")
+            group = dict(column)
+            group["groupWeight"] = weight
+            groups.append(group)
+        result[_format_matrix_string(pattern, row, prefix)] = groups
+    return result
+
+
+def _expand_content_matrix(name, config, all_vars):
+    """Expand content matrix; supports compact columns+ranges and legacy contents."""
+    rows = _resolve_dsl_reference(config.get("rows"), all_vars)
+    pattern = config.get("outputPattern")
+    prefix = config.get("prefix", "")
+
+    if not isinstance(rows, list) or not isinstance(pattern, str):
+        raise ValueError(f"{name}: invalid content matrix schema")
+
+    # Preferred compact schema:
+    # columns: [pool1, pool2, ...]
+    # ranges:  [[[min,max], null, ...], ...]
+    # null = pool absent; [0,0] = explicit zero-roll entry.
+    if "columns" in config or "ranges" in config:
+        columns = _resolve_dsl_reference(config.get("columns"), all_vars)
+        ranges = _resolve_dsl_reference(config.get("ranges"), all_vars)
+
+        if not isinstance(columns, list) or not isinstance(ranges, list):
+            raise ValueError(f"{name}: columns and ranges must both be arrays")
+        if len(rows) != len(ranges):
+            raise ValueError(f"{name}: rows={len(rows)} but range rows={len(ranges)}")
+
+        result = {}
+        for row, range_row in zip(rows, ranges):
+            if not isinstance(range_row, list):
+                raise ValueError(f"{name}/{row}: range row must be an array")
+            if len(range_row) != len(columns):
+                raise ValueError(
+                    f"{name}/{row}: columns={len(columns)} but ranges={len(range_row)}"
+                )
+
+            expanded = []
+            for pool, roll_range in zip(columns, range_row):
+                if roll_range is None:
+                    continue
+                if not isinstance(roll_range, list) or len(roll_range) != 2:
+                    raise ValueError(
+                        f"{name}/{row}: expected [min, max] or null for {pool!r}, "
+                        f"got {roll_range!r}"
+                    )
+
+                min_rolls, max_rolls = roll_range
+                expanded.append([
+                    _format_matrix_string(pool, row, prefix),
+                    min_rolls,
+                    max_rolls,
+                ])
+
+            result[_format_matrix_string(pattern, row, prefix)] = expanded
+        return result
+
+    # Backward compatibility with the old contents schema.
+    contents = _resolve_dsl_reference(config.get("contents"), all_vars)
+    if not isinstance(contents, list):
+        raise ValueError(
+            f"{name}: content matrix requires either columns+ranges or contents"
+        )
+    if len(rows) != len(contents):
+        raise ValueError(f"{name}: rows={len(rows)} but content rows={len(contents)}")
+
+    result = {}
+    for row, entries in zip(rows, contents):
+        if not isinstance(entries, list):
+            raise ValueError(f"{name}/{row}: content row must be an array")
+        expanded = []
+        for entry in entries:
+            if not isinstance(entry, list) or len(entry) != 3:
+                raise ValueError(f"{name}/{row}: expected [pool, min, max]")
+            pool, min_rolls, max_rolls = entry
+            expanded.append([
+                _format_matrix_string(pool, row, prefix),
+                min_rolls,
+                max_rolls,
+            ])
+        result[_format_matrix_string(pattern, row, prefix)] = expanded
+    return result
+
+def _expand_household_weight_matrix(name, config, all_vars):
+    rows = _resolve_dsl_reference(config.get("rows"), all_vars)
+    weights = _resolve_dsl_reference(config.get("weights"), all_vars)
+    prefix = config.get("prefix", "")
+    output = config.get("output")
+    content_pattern = config.get("contentPattern", "{prefix}_{row}_content")
+    extra = config.get("extra", [])
+    if not isinstance(rows, list) or not isinstance(weights, list) or not isinstance(output, str):
+        raise ValueError(f"{name}: invalid household weight matrix schema")
+    if len(rows) != len(weights):
+        raise ValueError(f"{name}: rows={len(rows)} but weights={len(weights)}")
+    data = [[_format_matrix_string(content_pattern, row, prefix), weight] for row, weight in zip(rows, weights)]
+    if not isinstance(extra, list):
+        raise ValueError(f"{name}: extra must be an array")
+    data.extend(extra)
+    return {output: data}
+
+
+def expand_matrix_dsl(all_vars: dict) -> dict:
+    """Compile matrix DSL objects to the legacy registry shape consumed by Java."""
+    result = dict(all_vars)
+    helper_keys = set()
+    for name, config in list(all_vars.items()):
+        if not name.endswith("_matrix") or not isinstance(config, dict):
+            continue
+        matrix_type = config.get("matrixType")
+        if matrix_type == "weight":
+            expanded = _expand_weight_matrix(name, config, all_vars)
+        elif matrix_type == "content":
+            expanded = _expand_content_matrix(name, config, all_vars)
+        elif matrix_type == "householdWeight":
+            expanded = _expand_household_weight_matrix(name, config, all_vars)
+        else:
+            continue
+        result.update(expanded)
+        result.pop(name, None)
+        rows_ref = config.get("rows")
+        if isinstance(rows_ref, str) and rows_ref in all_vars:
+            helper_keys.add(rows_ref)
+    for key in helper_keys:
+        result.pop(key, None)
+    return result
+
 # ----------------- 26.3 格式转换 -----------------
 def _convert_26_3_node(value):
     """递归把旧 Loot JSON 结构转换为 26.3 使用的新字段结构。"""
@@ -330,6 +490,7 @@ def convert_js_to_dict(js_code: str, source_name: str = "<unknown>") -> dict:
     tokens = tokenize_js(js_code)
     parser = JSObjectParser(tokens, source_name=source_name)
     all_vars = parser.parse_all()
+    all_vars = expand_matrix_dsl(all_vars)
 
     return {k: v for k, v in all_vars.items() if k not in FILTER_KEYS}
 

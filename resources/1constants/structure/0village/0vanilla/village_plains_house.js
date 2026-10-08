@@ -10,12 +10,6 @@
 // special -> specialty / economic crops outside the basic household diet
 // =================================================================
 
-// const village_plains_staple = [
-//     {
-//         groupName: "staples",
-//         groupWeight: 35,
-//         min: 2, max: 3,
-//         items: [
 const village_plains_staple = [
 
     { reference: "lootjs:wheat_seeds", ratio: 5 },
@@ -120,6 +114,7 @@ const village_plains_common_produce = [
     { reference: "lootjs:chicken_cuts", ratio: 20 },
     { reference: "lootjs:chicken", ratio: 5 },
 ]
+
 const village_plains_varied_produce = [
     // Protein / fat sources
     { reference: "lootjs:soybean", ratio: 25 },
@@ -177,6 +172,7 @@ const village_plains_varied_produce = [
     { id: "kaleidoscope_tavern:green_grape", ratio: 5 },
     { id: "kaleidoscope_tavern:grapevine", ratio: 10 },
 ]
+
 const village_plains_special_produce = [
     { reference: "lootjs:tea_seeds", ratio: 5 },
     { id: "youkaisfeasts:green_tea_leaves", ratio: 10 },
@@ -258,6 +254,7 @@ const village_plains_seed_bag = [
         ]
     },
 ];
+
 // // 3. 花卉、稻草与相关方块
 // const flowers_and_straw = [
 //     // =================================================================
@@ -298,32 +295,87 @@ const village_plains_seed_bag = [
 
 
 
-const village_plains_essential_wealth_equipment = [
+// =================================================================
+// Household market possessions
+// Produced goods from village special buildings are regrouped here by
+// household use rather than by profession.  A weight matrix below changes
+// the market profile of each household type.
+// =================================================================
 
-    {
-        groupName: "Villager Daily Essentials",
-        groupWeight: 30,
-        min: 2, max: 3,
-        items: [
-            { id: "minecraft:lantern", ratio: 10 },
-            { id: "minecraft:glass_bottle", ratio: 10 },
-            { id: "minecraft:bowl", ratio: 10 },
-            { id: "farmersdelight:rope", ratio: 10 },
-            { id: "supplementaries:sack", ratio: 10 },
-            { id: "farmersdelight:wooden_basket", ratio: 10 },
-            { id: "kaleidoscope_cookery:fruit_basket", ratio: 10 },
-        ]
-    },
+const village_plains_household_trade_goods = [
+    // Smith / mason household wares
+    { id: "kaleidoscope_cookery:stockpot", ratio: 10 },
+    { id: "kaleidoscope_cookery:pot", ratio: 10 },
+    { id: "kaleidoscope_cookery:stockpot_lid", ratio: 8 },
+    { id: "kaleidoscope_cookery:kitchen_shovel", ratio: 8 },
+    { id: "kaleidoscope_cookery:teapot", ratio: 6 },
+    { id: "farmersdelight:cooking_pot", ratio: 10 },
+    { id: "farmersdelight:skillet", ratio: 8 },
+    { id: "minecraft:bucket", ratio: 10 },
+    { id: "minecraft:lantern", ratio: 8 },
+    { id: "minecraft:flint_and_steel", ratio: 5 },
+    { id: "minecraft:glass_bottle", ratio: 10 },
+    { id: "minecraft:flower_pot", ratio: 7 },
+    { id: "minecraft:decorated_pot", ratio: 4 },
+    { id: "trailandtales_delight:pottery_cooking_pot", ratio: 8 },
+    { id: "kaleidoscope_chinesefood:pickle_jar", ratio: 8 },
 
-    {
-        groupName: "Village Wealth",
-        groupWeight: 15,
-        min: 3, max: 4,
-        items: [
-            { id: "minecraft:emerald", ratio: 20 },
-        ]
-    },
+    // Carpenter household wares
+    { id: "minecraft:bowl", ratio: 10 },
+    { id: "minecraft:barrel", ratio: 6 },
+    { id: "minecraft:chest", ratio: 5 },
+    { id: "farmersdelight:wooden_basket", ratio: 10 },
+    { id: "kaleidoscope_cookery:fruit_basket", ratio: 8 },
+    { id: "supplementaries:sack", ratio: 8 },
+];
 
+const village_plains_productive_trade_goods = [
+    { id: "minecraft:iron_hoe", ratio: 15 },
+    { id: "minecraft:iron_shovel", ratio: 10 },
+    { id: "minecraft:iron_axe", ratio: 8 },
+    { id: "minecraft:iron_pickaxe", ratio: 5 },
+    { id: "minecraft:shears", ratio: 10 },
+    { id: "minecraft:brush", ratio: 4 },
+    { id: "kaleidoscope_cookery:sickle", ratio: 12 },
+    { id: "farmersdelight:rope", ratio: 10 },
+    { id: "supplementaries:rope", ratio: 8 },
+];
+
+const village_plains_textile_leather_trade_goods = [
+    { id: "minecraft:white_wool", ratio: 10 },
+    { id: "minecraft:white_carpet", ratio: 10 },
+    { id: "minecraft:white_banner", ratio: 5 },
+    { id: "supplementaries:bunting_white", ratio: 5 },
+    { id: "supplementaries:flag_white", ratio: 5 },
+    { id: "minecraft:white_bed", ratio: 6 },
+    { id: "minecraft:item_frame", ratio: 8 },
+    { id: "minecraft:bundle", ratio: 8 },
+    { id: "travelersbackpack:standard", ratio: 3 },
+    { id: "minecraft:saddle", ratio: 3 },
+];
+
+const village_plains_knowledge_trade_goods = [
+    { id: "minecraft:paper", ratio: 15 },
+    { id: "minecraft:book", ratio: 15 },
+    { id: "minecraft:writable_book", ratio: 8 },
+    { id: "minecraft:map", ratio: 10 },
+    { id: "minecraft:compass", ratio: 7 },
+    { id: "minecraft:spyglass", ratio: 5 },
+    { id: "minecraft:painting", ratio: 8 },
+    { id: "supplementaries:globe", ratio: 3 },
+    { id: "minecraft:clock", ratio: 4 },
+];
+
+const village_plains_security_trade_goods = [
+    { id: "minecraft:shield", ratio: 10 },
+    { id: "minecraft:bow", ratio: 8 },
+    { id: "supplementaries:slingshot", ratio: 8 },
+    { id: "minecraft:stone_sword", ratio: 5 },
+    { id: "minecraft:iron_sword", ratio: 3 },
+    { id: "supplementaries:quiver", ratio: 5 },
+    { id: "minecraft:crossbow", ratio: 3 },
+    { id: "minecraft:chainmail_helmet", ratio: 2 },
+    { id: "minecraft:chainmail_chestplate", ratio: 1 },
 ];
 
 // =================================================================
@@ -865,150 +917,163 @@ const village_plains_bakery_baking_material = [
         ]
     },
 ]
+
 const village_plains_everyone_staple = [
     { groupName: "common",  groupWeight: 100, min: 2, max: 3, items: village_plains_staple },
 ]
 
-const village_plains_smallholder_farming_produce = [
-    { groupName: "common",  groupWeight: 70, min: 2, max: 3, items: village_plains_common_produce },
-    { groupName: "varied",  groupWeight: 25, min: 2, max: 3, items: village_plains_varied_produce },
-    { groupName: "special", groupWeight: 5,  min: 2, max: 3, items: village_plains_special_produce },
-]
+const village_plains_household_types = [
+    "smallholder_farming",
+    "smallholder_life",
+    "large_scale_farming",
+    "large_scale_farm_life",
+    "non_farm_households",
+];
 
-const village_plains_smallholder_life_produce = [
-    { groupName: "common",  groupWeight: 65, min: 2, max: 3, items: village_plains_common_produce },
-    { groupName: "varied",  groupWeight: 30, min: 2, max: 3, items: village_plains_varied_produce },
-    { groupName: "special", groupWeight: 5,  min: 2, max: 3, items: village_plains_special_produce },
-]
+// =================================================================
+// 平原住宅：家庭类型矩阵
+//
+// 行顺序（以下所有矩阵统一使用 village_plains_household_types）：
+//   1. smallholder_farming     小农生产型：偏原料储备与生产工具
+//   2. smallholder_life        小农生活型：偏日常消费与家庭用品
+//   3. large_scale_farming     大农生产型：生产投入较高，并持有更多财富
+//   4. large_scale_farm_life   大农生活型：饮食、消费与财富水平较高
+//   5. non_farm_households     非农家庭：依赖市场，知识/加工商品占比更高
+//
+// weight 矩阵中的数字均为同一行内各组的相对权重；
+// 同一次抽取只会命中一个组，多次调用同一矩阵时不同组可以共存。
+// =================================================================
 
-const village_plains_large_scale_farming_produce = [
-    { groupName: "common",  groupWeight: 30, min: 2, max: 3, items: village_plains_common_produce },
-    { groupName: "varied",  groupWeight: 30, min: 2, max: 3, items: village_plains_varied_produce },
-    { groupName: "special", groupWeight: 30, min: 2, max: 3, items: village_plains_special_produce },
-]
+const village_plains_produce_matrix = {
+    matrixType: "weight",
+    rows: village_plains_household_types,
+    columns: [
+        { groupName: "common",  min: 2, max: 3, items: village_plains_common_produce },
+        { groupName: "varied",  min: 2, max: 3, items: village_plains_varied_produce },
+        { groupName: "special", min: 2, max: 3, items: village_plains_special_produce },
+    ],
 
-const village_plains_large_scale_farm_life_produce = [
-    { groupName: "common",  groupWeight: 40, min: 2, max: 3, items: village_plains_common_produce },
-    { groupName: "varied",  groupWeight: 40, min: 2, max: 3, items: village_plains_varied_produce },
-    { groupName: "special", groupWeight: 20, min: 2, max: 3, items: village_plains_special_produce },
-]
+    // 农产品结构权重
+    //                         common  varied  special
+    weights: [
+        [                          70,     25,       5 ], // smallholder_farming
+        [                          65,     30,       5 ], // smallholder_life
+        [                          30,     30,      30 ], // large_scale_farming
+        [                          40,     40,      20 ], // large_scale_farm_life
+        [                          45,     45,      10 ], // non_farm_households
+    ],
+    outputPattern: "village_plains_{row}_produce",
+};
 
-const village_plains_non_farm_households_produce = [
-    { groupName: "common",  groupWeight: 45, min: 2, max: 3, items: village_plains_common_produce },
-    { groupName: "varied",  groupWeight: 45, min: 2, max: 3, items: village_plains_varied_produce },
-    { groupName: "special", groupWeight: 10, min: 2, max: 3, items: village_plains_special_produce },
-]
+const village_plains_market_possessions_matrix = {
+    matrixType: "weight",
+    rows: village_plains_household_types,
+    columns: [
+        { groupName: "household_goods",       min: 1, max: 2, items: village_plains_household_trade_goods },
+        { groupName: "productive_goods",      min: 1, max: 1, damage: [0.5, 0.9], items: village_plains_productive_trade_goods },
+        { groupName: "textile_leather_goods", min: 1, max: 2, items: village_plains_textile_leather_trade_goods },
+        { groupName: "knowledge_goods",        min: 1, max: 2, items: village_plains_knowledge_trade_goods },
+        { groupName: "security_goods",         min: 1, max: 1, damage: [0.5, 0.9], items: village_plains_security_trade_goods },
+        { groupName: "liquid_wealth",          min: 1, max: 3, items: [{ id: "minecraft:emerald", ratio: 10 }] },
+        { groupName: "empty",                                  items: [{ id: "empty" }] },
+    ],
 
+    // 市场占有物结构权重
+    // household : 厨具、容器、照明等家庭耐用品
+    // productive: 农具、工具及生产性用品
+    // textile   : 纺织、皮革与随身收纳商品
+    // knowledge : 书写、地图、导航与文化用品
+    // security  : 武器、防具及家庭防卫用品
+    // emerald   : 尚未转化为商品的流动财富
+    // empty     : 本次没有额外市场资产
+    //
+    //                         household  productive  textile  knowledge  security  emerald  empty
+    weights: [
+        [                          20,          35,       15,         5,        5,       5,    15 ], // smallholder_farming
+        [                          35,          20,       20,         5,        5,       5,    10 ], // smallholder_life
+        [                          25,          30,       15,         5,        5,      15,     5 ], // large_scale_farming
+        [                          35,          15,       15,        10,        5,      15,     5 ], // large_scale_farm_life
+        [                          30,          10,       15,        20,        5,      15,     5 ], // non_farm_households
+    ],
+    outputPattern: "village_plains_{row}_market_possessions",
+};
 
+const village_plains_food_matrix = {
+    matrixType: "weight",
+    rows: village_plains_household_types,
+    columns: [
+        { groupName: "simple_food",    min: 1, max: 2, items: village_plains_simple_food },
+        { groupName: "prepared_food",  min: 1, max: 2, items: village_plains_prepared_food },
+        { groupName: "preserved_food", min: 1, max: 2, items: village_plains_preserved_food },
+        { groupName: "dish",           min: 1, max: 2, items: village_plains_dish },
+    ],
 
-const village_plains_smallholder_farming_food = [
-    { groupName: "simple_food",    groupWeight: 0, min: 1, max: 2, items: village_plains_simple_food },
-    { groupName: "prepared_food",  groupWeight: 0 , min: 1, max: 2, items: village_plains_prepared_food },
-    { groupName: "preserved_food", groupWeight: 0, min: 1, max: 2, items: village_plains_preserved_food },
-    { groupName: "dish",           groupWeight: 0 , min: 1, max: 2, items: village_plains_dish },
-]
-
-const village_plains_smallholder_life_food = [
-    { groupName: "simple_food",    groupWeight: 30, min: 1, max: 2, items: village_plains_simple_food },
-    { groupName: "prepared_food",  groupWeight: 20, min: 1, max: 2, items: village_plains_prepared_food },
-    { groupName: "preserved_food", groupWeight: 35, min: 1, max: 2, items: village_plains_preserved_food },
-    { groupName: "dish",           groupWeight: 15, min: 1, max: 2, items: village_plains_dish },
-]
-
-const village_plains_large_scale_farming_food = [
-    { groupName: "simple_food",    groupWeight: 45, min: 1, max: 2, items: village_plains_simple_food },
-    { groupName: "prepared_food",  groupWeight: 30, min: 1, max: 2, items: village_plains_prepared_food },
-    { groupName: "preserved_food", groupWeight: 25, min: 1, max: 2, items: village_plains_preserved_food },
-    { groupName: "dish",           groupWeight: 0 , min: 1, max: 2, items: village_plains_dish },
-]
-
-const village_plains_large_scale_farm_life_food = [
-    { groupName: "simple_food",    groupWeight: 30, min: 1, max: 2, items: village_plains_simple_food },
-    { groupName: "prepared_food",  groupWeight: 10, min: 1, max: 2, items: village_plains_prepared_food },
-    { groupName: "preserved_food", groupWeight: 10, min: 1, max: 2, items: village_plains_preserved_food },
-    { groupName: "dish",           groupWeight: 50, min: 1, max: 2, items: village_plains_dish },
-]
-
-const village_plains_non_farm_households_food = [
-    { groupName: "simple_food",    groupWeight: 20, min: 1, max: 2, items: village_plains_simple_food },
-    { groupName: "prepared_food",  groupWeight: 50, min: 1, max: 2, items: village_plains_prepared_food },
-    { groupName: "preserved_food", groupWeight: 0, min: 1, max: 2, items: village_plains_preserved_food },
-    { groupName: "dish",           groupWeight: 30, min: 1, max: 2, items: village_plains_dish },
-]
+    // 食品结构权重
+    // simple   : 普通家庭熟食 / 基础餐食
+    // prepared : 独立加工、分份或即食食品
+    // preserved: 腌制、保存食品
+    // dish     : 更完整、价值更高的菜肴
+    //
+    //                         simple  prepared  preserved  dish
+    weights: [
+        [                           0,        0,          0,    0 ], // smallholder_farming：生产型，不直接生成成品食物
+        [                          30,       20,         35,   15 ], // smallholder_life
+        [                          45,       30,         25,    0 ], // large_scale_farming
+        [                          30,       10,         10,   50 ], // large_scale_farm_life
+        [                          20,       50,          0,   30 ], // non_farm_households
+    ],
+    outputPattern: "village_plains_{row}_food",
+};
 
 // =================================================================
 // 事件注册区域
 // =================================================================
 
 const village_plains_bakery_content = [
-
     [village_plains_bakery_products, 2, 2],
     [village_plains_bakery_baking_material, 2, 3],
     [village_smith_small_iron_knife, 1, 1],
 ];
 
+const village_plains_content_matrix = {
+    matrixType: "content",
+    rows: village_plains_household_types,
+    prefix: "village_plains",
+    outputPattern: "village_plains_{row}_content",
 
-const village_plains_smallholder_farming_content = [
-    [village_plains_everyone_staple, 2, 3],
-    [village_plains_smallholder_farming_produce, 1, 2],
-    [village_plains_smallholder_farming_food, 0, 0],
-    [village_plains_seed_bag, 1, 1],
-    [village_profession_item, 1, 1],
-    [village_cooking_equipment_less, 0, 0],
-]
+    columns: [
+        "village_plains_everyone_staple",
+        "{prefix}_{row}_produce",
+        "{prefix}_{row}_food",
+        "village_plains_seed_bag",
+        "{prefix}_{row}_market_possessions",
+        "village_plains_drinks",
+        "village_recipe_item",
+    ],
 
-const village_plains_smallholder_life_content = [
-    [village_plains_everyone_staple, 1, 1],
-    [village_plains_smallholder_life_produce, 1, 2],
-    [village_plains_smallholder_life_food, 1, 2],
-    [village_plains_seed_bag, 1, 1],
-    [village_profession_item, 1, 1],
-    [village_cooking_equipment_less, 1, 1],
-    [village_plains_drinks, 1, 1],
-]
+    // 每个单元格为 [最少调用次数, 最多调用次数]；null 表示该家庭类型不调用此列。
+    //                         staple  produce   food    seed    market  drinks  recipe
+    ranges: [
+        [                         [2,3],   [1,2],   null,  [1,1],   [1,1],   null,   null  ], // smallholder_farming
+        [                         [1,1],   [1,2],  [1,2],  [1,1],   [1,2],  [1,1],   null  ], // smallholder_life
+        [                         [2,3],   [2,3],  [1,2],  [1,1],   [1,2],   null,   null  ], // large_scale_farming
+        [                         [1,2],   [1,2],  [2,3],   null,   [1,2],  [1,1],  [1,1] ], // large_scale_farm_life
+        [                          null,   [2,3],  [1,2],   null,   [1,2],  [1,1],  [1,1] ], // non_farm_households
+    ],
+};
 
-const village_plains_large_scale_farming_content = [
-    [village_plains_everyone_staple, 2, 3],
-    [village_plains_large_scale_farming_produce, 2, 3],
-    [village_plains_large_scale_farming_food, 1, 2],
-    [village_plains_seed_bag, 1, 1],
-    [village_profession_item, 1, 1],
-    [village_cooking_equipment_less, 1, 1],
-    [village_plains_essential_wealth_equipment, 1, 1],
-]
+const village_plains_household_weight_matrix = {
+    matrixType: "householdWeight",
+    rows: village_plains_household_types,
 
-const village_plains_large_scale_farm_life_content = [
-    [village_plains_everyone_staple, 1, 2],
-    [village_plains_large_scale_farm_life_produce, 1, 2],
-    [village_plains_large_scale_farm_life_food, 2, 3],
-    [village_profession_item, 1, 1],
-    [village_cooking_equipment_more, 1, 1],
-    [village_plains_drinks, 1, 1],
-    [village_recipe_item, 1, 1],
-    [village_plains_essential_wealth_equipment, 1, 1],
-]
-
-const village_plains_non_farm_households_content = [
-    [village_plains_everyone_staple, 0, 0],
-    [village_plains_non_farm_households_produce, 2, 3],
-    [village_plains_non_farm_households_food, 1, 2],
-    [village_profession_item, 1, 1],
-    [village_cooking_equipment_more, 1, 1],
-    [village_plains_drinks, 1, 1],
-    [village_recipe_item, 1, 1],
-    [village_plains_essential_wealth_equipment, 1, 1],
-]
-
-
-const loot_village_plains_house = [
-    // Farm households — 10
-    [village_plains_smallholder_farming_content, 3],
-    [village_plains_smallholder_life_content, 2],
-    [village_plains_large_scale_farming_content, 2],
-    [village_plains_large_scale_farm_life_content, 1],
-    [village_plains_non_farm_households_content, 2],
-
-    // Specialized households — 2
-    [carpenterData.plains, 1],
-    [village_plains_bakery_content, 1],
-]
+    // 最终住宅原型抽取权重；与 village_plains_household_types 的行顺序一一对应。
+    //                         smallholder_farming  smallholder_life  large_scale_farming  large_scale_farm_life  non_farm_households
+    weights: [                              3,                 2,                   2,                      1,                    2 ],
+    prefix: "village_plains",
+    contentPattern: "{prefix}_{row}_content",
+    extra: [
+        [carpenterData.plains, 1],
+        [village_plains_bakery_content, 1],
+    ],
+    output: "loot_village_plains_house",
+};

@@ -341,13 +341,7 @@ const woodland_mansion_all_village_house_common_dish = [
         groupName: "plains_house_europe",
         groupWeight: 10, 
         min: 2, max: 3,
-        items: village_plains_dish_common_europe
-    },
-    {
-        groupName: "plains_house_asia",
-        groupWeight: 10, 
-        min: 2, max: 3,
-        items: village_plains_dish_common_asia
+        items: village_plains_simple_food
     },
     {
         groupName: "savanna_house",
