@@ -388,7 +388,6 @@ from python_util import tableandglm
 from python_util import loot_convert
 from python_util import loot_table_processor
 from python_util import apply_convert
-from python_util import better_loot_linker_v2
 from python_util import copy_data
 # from python_util import create_mcmeta
 from python_util.version_profile import get_version_profile, pack_format_json
@@ -508,6 +507,55 @@ def create_datapack_zip(source_dir: Path, zip_path: Path):
             )
 
 
+def normalize_datapack_resource_paths(data_dir: Path) -> int:
+    """Lowercase Minecraft resource paths, including on case-insensitive Windows."""
+    if not data_dir.is_dir():
+        return 0
+
+    files = sorted((p for p in data_dir.rglob("*") if p.is_file()), key=str)
+    destinations = {}
+    changes = []
+    for source in files:
+        relative = source.relative_to(data_dir)
+        lowered = Path(*(part.lower() for part in relative.parts))
+        destination = data_dir / lowered
+        # Use string-based path comparison: WindowsPath equality ignores case.
+        collision_key = lowered.as_posix()
+        if collision_key in destinations:
+            previous = destinations[collision_key]
+            raise ValueError(
+                f"Resource path collision after lowercasing: "
+                f"{previous} and {source} -> {destination}"
+            )
+        destinations[collision_key] = source
+        if relative.as_posix() != lowered.as_posix():
+            changes.append((source, destination))
+
+    if not changes:
+        return 0
+
+    import tempfile
+    # Stage files outside data_dir, then remove old empty uppercase folders
+    # BEFORE creating lowercase destinations. Required on Windows/NTFS.
+    with tempfile.TemporaryDirectory(prefix="better_loot_paths_") as temporary:
+        staging = Path(temporary)
+        for index, (source, _) in enumerate(changes):
+            shutil.move(str(source), str(staging / str(index)))
+
+        for directory in sorted(
+                (p for p in data_dir.rglob("*") if p.is_dir()),
+                key=lambda p: len(p.parts), reverse=True,
+        ):
+            if not any(directory.iterdir()):
+                directory.rmdir()
+
+        for index, (_, destination) in enumerate(changes):
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.move(str(staging / str(index)), str(destination))
+
+    return len(changes)
+
+
 def process_target(target: str, jobs: dict):
     job = jobs[target]
 
@@ -608,17 +656,6 @@ def process_target(target: str, jobs: dict):
         output_folder=loot_bindings_output,
     )
 
-    # Compile LEC references into bindings before packaging the resources.
-    # Build into a sibling directory and only replace the originals on success.
-    expanded_bindings_output = loot_bindings_output.with_name("loot_bindings_expanded")
-    print(f">>> [{target}] Linking Loot Bindings at build time")
-    better_loot_linker_v2.link_folders(
-        pool_folder=loot_pools_output,
-        binding_folder=loot_bindings_output,
-        output_folder=expanded_bindings_output,
-    )
-    shutil.rmtree(loot_bindings_output)
-    expanded_bindings_output.rename(loot_bindings_output)
 
     # --------------------------------------------------------
     # Item Unifications
@@ -659,6 +696,15 @@ def process_target(target: str, jobs: dict):
         old_name="kubejs",
         new_name="better_loot_zibura",
     )
+
+    # Normalize generated Minecraft resource locations before packaging.
+    normalized_mod = normalize_datapack_resource_paths(output_data)
+    normalized_overrides = (
+        normalize_datapack_resource_paths(override_output_data)
+        if override_output_data != output_data else 0
+    )
+    print(f">>> [{target}] Normalized resource paths: "
+          f"{normalized_mod + normalized_overrides}")
 
     # Fabric 的覆盖资源作为独立 datapack：生成 metadata 后直接打成 ZIP。
     if loader == "fabric":

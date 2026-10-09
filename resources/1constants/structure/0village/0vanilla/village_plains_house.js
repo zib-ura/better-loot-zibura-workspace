@@ -969,9 +969,9 @@ const village_plains_market_possessions_matrix = {
     matrixType: "weight",
     rows: village_plains_household_types,
     columns: [
-        { groupName: "household_goods",       min: 1, max: 2, items: village_plains_household_trade_goods },
+        { groupName: "household_goods",       min: 1, max: 1, items: village_plains_household_trade_goods },
         { groupName: "productive_goods",      min: 1, max: 1, damage: [0.5, 0.9], items: village_plains_productive_trade_goods },
-        { groupName: "textile_leather_goods", min: 1, max: 2, items: village_plains_textile_leather_trade_goods },
+        { groupName: "textile_leather_goods", min: 1, max: 1, items: village_plains_textile_leather_trade_goods },
         { groupName: "knowledge_goods",        min: 1, max: 2, items: village_plains_knowledge_trade_goods },
         { groupName: "security_goods",         min: 1, max: 1, damage: [0.5, 0.9], items: village_plains_security_trade_goods },
         { groupName: "liquid_wealth",          min: 1, max: 3, items: [{ id: "minecraft:emerald", ratio: 10 }] },
