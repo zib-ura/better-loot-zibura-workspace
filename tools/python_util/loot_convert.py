@@ -490,7 +490,7 @@ def convert_js_to_dict(js_code: str, source_name: str = "<unknown>") -> dict:
     tokens = tokenize_js(js_code)
     parser = JSObjectParser(tokens, source_name=source_name)
     all_vars = parser.parse_all()
-    all_vars = expand_matrix_dsl(all_vars)
+    # Matrix DSL is compiled by Java at datapack reload time.
 
     return {k: v for k, v in all_vars.items() if k not in FILTER_KEYS}
 

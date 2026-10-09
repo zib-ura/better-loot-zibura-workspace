@@ -543,8 +543,8 @@ def normalize_datapack_resource_paths(data_dir: Path) -> int:
             shutil.move(str(source), str(staging / str(index)))
 
         for directory in sorted(
-                (p for p in data_dir.rglob("*") if p.is_dir()),
-                key=lambda p: len(p.parts), reverse=True,
+            (p for p in data_dir.rglob("*") if p.is_dir()),
+            key=lambda p: len(p.parts), reverse=True,
         ):
             if not any(directory.iterdir()):
                 directory.rmdir()
