@@ -945,7 +945,7 @@ const village_plains_household_types = [
 // =================================================================
 
 const village_plains_produce_matrix = {
-    matrixType: "weight",
+    matrixType: "groupToPool",
     rows: village_plains_household_types,
     columns: [
         { groupName: "common",  min: 2, max: 3, items: village_plains_common_produce },
@@ -966,7 +966,7 @@ const village_plains_produce_matrix = {
 };
 
 const village_plains_market_possessions_matrix = {
-    matrixType: "weight",
+    matrixType: "groupToPool",
     rows: village_plains_household_types,
     columns: [
         { groupName: "household_goods",       min: 1, max: 1, items: village_plains_household_trade_goods },
@@ -999,7 +999,7 @@ const village_plains_market_possessions_matrix = {
 };
 
 const village_plains_food_matrix = {
-    matrixType: "weight",
+    matrixType: "groupToPool",
     rows: village_plains_household_types,
     columns: [
         { groupName: "simple_food",    min: 1, max: 2, items: village_plains_simple_food },
@@ -1036,7 +1036,7 @@ const village_plains_bakery_content = [
 ];
 
 const village_plains_content_matrix = {
-    matrixType: "content",
+    matrixType: "poolToContent",
     rows: village_plains_household_types,
     prefix: "village_plains",
     outputPattern: "village_plains_{row}_content",
@@ -1053,7 +1053,7 @@ const village_plains_content_matrix = {
 
     // 每个单元格为 [最少调用次数, 最多调用次数]；null 表示该家庭类型不调用此列。
     //                         staple  produce   food    seed    market  drinks  recipe
-    ranges: [
+    rolls: [
         [                         [2,3],   [1,2],   null,  [1,1],   [1,1],   null,   null  ], // smallholder_farming
         [                         [1,1],   [1,2],  [1,2],  [1,1],   [1,2],  [1,1],   null  ], // smallholder_life
         [                         [2,3],   [2,3],  [1,2],  [1,1],   [1,2],   null,   null  ], // large_scale_farming
@@ -1063,7 +1063,7 @@ const village_plains_content_matrix = {
 };
 
 const village_plains_household_weight_matrix = {
-    matrixType: "householdWeight",
+    matrixType: "contentToTable",
     rows: village_plains_household_types,
 
     // 最终住宅原型抽取权重；与 village_plains_household_types 的行顺序一一对应。
