@@ -151,6 +151,7 @@ let DUPLICATE_ITEMS_CONFIG = [
     { result: "lootjs:beef",                                                        candidates: ["minecraft:beef"] },
     { result: "lootjs:mutton",                                                      candidates: ["minecraft:mutton"] },
     { result: "lootjs:porkchop",                                                    candidates: ["minecraft:porkchop"] },
+    { result: "lootjs:rabbit",                                                      candidates: ["minecraft:rabbit"] },
 
     { result: "lootjs:bacon",                                                       candidates: ["farmersdelight:bacon", "farm_and_charm:bacon", "kaleidoscope_cookery:raw_pork_belly"] },
     { result: "lootjs:cooked_bacon",                                                candidates: ["farmersdelight:cooked_bacon", "kaleidoscope_cookery:cooked_pork_belly"] },

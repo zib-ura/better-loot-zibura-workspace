@@ -241,7 +241,8 @@ def process_loot_tables(
     input_dir,
     output_dir,
     apply_dir,
-    verbose=True
+    verbose=True,
+    output_resolver=None,
 ):
     """
     批量处理 Loot Table。
@@ -395,7 +396,9 @@ def process_loot_tables(
             # =========================
 
             relative_path = json_file.relative_to(data_dir)
-            output_file = output_dir / relative_path
+            target_data_dir = (output_resolver(data_dir, relative_path.parts[0])
+                               if output_resolver else output_dir)
+            output_file = Path(target_data_dir) / relative_path
 
             output_file.parent.mkdir(
                 parents=True,

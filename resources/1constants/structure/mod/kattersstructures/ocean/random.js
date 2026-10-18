@@ -85,7 +85,7 @@ const kattersstructures_ocean_random_equipment = [
 ]
 
 const kattersstructures_ocean_random_fish_content = [
-    [village_fisher_fish, 2, 3],
+    [village_fisher_aquatic_catches, 2, 3],
     [kattersstructures_ocean_random_equipment, 1, 2],
 
 

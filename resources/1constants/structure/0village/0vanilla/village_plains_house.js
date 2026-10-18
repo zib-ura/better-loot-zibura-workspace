@@ -11,6 +11,7 @@
 // =================================================================
 
 const village_plains_staple = [
+    { id: "empty", ratio: 1 },
 
     { reference: "lootjs:wheat_seeds", ratio: 5 },
     { reference: "lootjs:wheat", ratio: 10 },
@@ -35,6 +36,8 @@ const village_plains_staple = [
 ]
 
 const village_plains_common_produce = [
+    { id: "empty", ratio: 1 },
+
     { reference: "lootjs:carrot", ratio: 15 },
     { reference: "lootjs:carrot_and_carrot_block", ratio: 10 },
 
@@ -116,9 +119,13 @@ const village_plains_common_produce = [
 ]
 
 const village_plains_varied_produce = [
+    { id: "empty", ratio: 1 },
+
     // Protein / fat sources
     { reference: "lootjs:soybean", ratio: 25 },
+
     { reference: "lootjs:redbean", ratio: 25 },
+
     { reference: "lootjs:peanut", ratio: 25 },
 
     { id: 'farmersdelight:milk_bottle', ratio: 25 },
@@ -143,11 +150,15 @@ const village_plains_varied_produce = [
     // Produce that increases household food variety
     { reference: "lootjs:fennel_seeds", ratio: 5 },
     { reference: "lootjs:fennel", ratio: 20 },
+
     { reference: "lootjs:parsley_seeds", ratio: 5 },
     { reference: "lootjs:parsley", ratio: 20 },
+
     { reference: "lootjs:garlic_chive_seeds", ratio: 5 },
     { reference: "lootjs:garlic_chive", ratio: 20 },
+
     { reference: "lootjs:greenonion", ratio: 25 },
+
     { reference: "lootjs:garlic_clove", ratio: 5 },
     { reference: "lootjs:garlic", ratio: 20 },
 
@@ -174,15 +185,21 @@ const village_plains_varied_produce = [
 ]
 
 const village_plains_special_produce = [
-    { reference: "lootjs:tea_seeds", ratio: 5 },
-    { id: "youkaisfeasts:green_tea_leaves", ratio: 10 },
-    { id: "youkaisfeasts:white_tea_leaves", ratio: 10 },
+    { id: "empty", ratio: 1 },
+
+    { reference: "lootjs:tea_seeds", ratio: 25 },
+
+    { id: "minecraft:sugar_cane", ratio: 25 },
+
+    { id: "minecraft:honey_bottle", ratio: 25 },
 
     { reference: "lootjs:flax_seeds", ratio: 5 },
     { reference: "lootjs:flax", ratio: 20 },
 
     { reference: "lootjs:cotton_seeds", ratio: 5 },
     { reference: "lootjs:cotton", ratio: 20 },
+
+
 ]
 
 const plains_seed_type = [
@@ -295,88 +312,6 @@ const village_plains_seed_bag = [
 
 
 
-// =================================================================
-// Household market possessions
-// Produced goods from village special buildings are regrouped here by
-// household use rather than by profession.  A weight matrix below changes
-// the market profile of each household type.
-// =================================================================
-
-const village_plains_household_trade_goods = [
-    // Smith / mason household wares
-    { id: "kaleidoscope_cookery:stockpot", ratio: 10 },
-    { id: "kaleidoscope_cookery:pot", ratio: 10 },
-    { id: "kaleidoscope_cookery:stockpot_lid", ratio: 8 },
-    { id: "kaleidoscope_cookery:kitchen_shovel", ratio: 8 },
-    { id: "kaleidoscope_cookery:teapot", ratio: 6 },
-    { id: "farmersdelight:cooking_pot", ratio: 10 },
-    { id: "farmersdelight:skillet", ratio: 8 },
-    { id: "minecraft:bucket", ratio: 10 },
-    { id: "minecraft:lantern", ratio: 8 },
-    { id: "minecraft:flint_and_steel", ratio: 5 },
-    { id: "minecraft:glass_bottle", ratio: 10 },
-    { id: "minecraft:flower_pot", ratio: 7 },
-    { id: "minecraft:decorated_pot", ratio: 4 },
-    { id: "trailandtales_delight:pottery_cooking_pot", ratio: 8 },
-    { id: "kaleidoscope_chinesefood:pickle_jar", ratio: 8 },
-
-    // Carpenter household wares
-    { id: "minecraft:bowl", ratio: 10 },
-    { id: "minecraft:barrel", ratio: 6 },
-    { id: "minecraft:chest", ratio: 5 },
-    { id: "farmersdelight:wooden_basket", ratio: 10 },
-    { id: "kaleidoscope_cookery:fruit_basket", ratio: 8 },
-    { id: "supplementaries:sack", ratio: 8 },
-];
-
-const village_plains_productive_trade_goods = [
-    { id: "minecraft:iron_hoe", ratio: 15 },
-    { id: "minecraft:iron_shovel", ratio: 10 },
-    { id: "minecraft:iron_axe", ratio: 8 },
-    { id: "minecraft:iron_pickaxe", ratio: 5 },
-    { id: "minecraft:shears", ratio: 10 },
-    { id: "minecraft:brush", ratio: 4 },
-    { id: "kaleidoscope_cookery:sickle", ratio: 12 },
-    { id: "farmersdelight:rope", ratio: 10 },
-    { id: "supplementaries:rope", ratio: 8 },
-];
-
-const village_plains_textile_leather_trade_goods = [
-    { id: "minecraft:white_wool", ratio: 10 },
-    { id: "minecraft:white_carpet", ratio: 10 },
-    { id: "minecraft:white_banner", ratio: 5 },
-    { id: "supplementaries:bunting_white", ratio: 5 },
-    { id: "supplementaries:flag_white", ratio: 5 },
-    { id: "minecraft:white_bed", ratio: 6 },
-    { id: "minecraft:item_frame", ratio: 8 },
-    { id: "minecraft:bundle", ratio: 8 },
-    { id: "travelersbackpack:standard", ratio: 3 },
-    { id: "minecraft:saddle", ratio: 3 },
-];
-
-const village_plains_knowledge_trade_goods = [
-    { id: "minecraft:paper", ratio: 15 },
-    { id: "minecraft:book", ratio: 15 },
-    { id: "minecraft:writable_book", ratio: 8 },
-    { id: "minecraft:map", ratio: 10 },
-    { id: "minecraft:compass", ratio: 7 },
-    { id: "minecraft:spyglass", ratio: 5 },
-    { id: "minecraft:painting", ratio: 8 },
-    { id: "supplementaries:globe", ratio: 3 },
-    { id: "minecraft:clock", ratio: 4 },
-];
-
-const village_plains_security_trade_goods = [
-    { id: "minecraft:shield", ratio: 10 },
-    { id: "minecraft:bow", ratio: 8 },
-    { id: "supplementaries:slingshot", ratio: 8 },
-    { id: "minecraft:stone_sword", ratio: 5 },
-    { id: "minecraft:iron_sword", ratio: 3 },
-    { id: "supplementaries:quiver", ratio: 5 },
-    { id: "minecraft:crossbow", ratio: 3 },
-    { id: "minecraft:chainmail_helmet", ratio: 2 },
-    { id: "minecraft:chainmail_chestplate", ratio: 1 },
-];
 
 // =================================================================
 // Food classification for village social/economic semantics
@@ -385,6 +320,8 @@ const village_plains_security_trade_goods = [
 // =================================================================
 
 const village_plains_preserved_food = [
+    { id: "empty", ratio: 1 },
+
 
     { id: "kaleidoscope_chinesefood:salted_egg", ratio: 10 },
     { id: "kaleidoscope_chinesefood:century_egg", ratio: 10 },
@@ -397,233 +334,791 @@ const village_plains_preserved_food = [
 ];
 
 const village_plains_simple_food = [
-    // Europe / western-style common household food
+    { id: "empty", ratio: 1 },
+
+    // ============================================================
+    // 欧洲 / 西式乡村日常饮食
+    // ============================================================
+
+    // ------------------------------------------------------------
+    // 1. 主食 - 面包、谷物与粥
+    // ------------------------------------------------------------
+
+    // 面包类
     { id: "minecraft:bread", ratio: 10 },
-    { id: "farmersdelight:mixed_salad", ratio: 10 },
-    { id: "moredelight:chicken_salad", ratio: 10 },
-    { id: "moredelight:potato_salad", ratio: 10 },
-    { id: "kitchenkarrot:cooked_vegan_pork", ratio: 10 },
-    { id: "kitchenkarrot:cooked_vegan_beef", ratio: 10 },
-    { id: "kitchenkarrot:fruit_cereal_porridge", ratio: 10 },
-    { id: "farm_and_charm:farmer_salad", ratio: 10 },
-    { id: "farm_and_charm:goulash", ratio: 10 },
-    { id: "farm_and_charm:roasted_chicken", ratio: 10 },
-    { id: "farm_and_charm:sausage_with_oat_patty", ratio: 10 },
-    { id: "farm_and_charm:beef_patty_with_vegetables", ratio: 10 },
-    { id: "farm_and_charm:barley_patties_with_potatoes", ratio: 10 },
-    { id: "farm_and_charm:pasta_with_onion_sauce", ratio: 10 },
-    { id: "farm_and_charm:potato_soup", ratio: 10 },
-    { id: "farm_and_charm:onion_soup", ratio: 10 },
-    { id: "farm_and_charm:barley_soup", ratio: 10 },
-    { id: "farm_and_charm:simple_tomato_soup", ratio: 10 },
     { id: "farm_and_charm:farmers_bread", ratio: 10 },
-    { id: "farm_and_charm:stuffed_chicken", ratio: 10 },
-    { id: "farm_and_charm:potato_with_roast_meat", ratio: 10 },
-    { id: "brewery:potato_salad", ratio: 10 },
-    { id: "brewery:mashed_potatoes", ratio: 10 },
-    { id: "vintagedelight:cheese_pasta", ratio: 10 },
-    { id: "vintagedelight:roasted_peanut", ratio: 10 },
+
+    // 燕麦、谷物粥
     { id: "vintagedelight:oatmeal", ratio: 10 },
-    { id: "culturaldelights:poached_eggplants", ratio: 10 },
-    { id: "culturaldelights:hearty_salad", ratio: 10 },
-    { id: "rusticdelight:potato_salad", ratio: 10 },
-    { id: "rusticdelight:stuffed_bell_pepper_yellow", ratio: 10 },
-    { id: "rusticdelight:stuffed_bell_pepper_red", ratio: 10 },
-    { id: "rusticdelight:stuffed_bell_pepper_orange", ratio: 10 },
+    { id: "kitchenkarrot:fruit_cereal_porridge", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 2. 主食 - 面食与面点
+    // ------------------------------------------------------------
+
+    // 奶酪、蔬菜意面
+    { id: "vintagedelight:cheese_pasta", ratio: 10 },
+    { id: "farm_and_charm:pasta_with_onion_sauce", ratio: 10 },
+    { id: "veggiesdelight:pasta_with_broccoli", ratio: 10 },
+
+    // 烘焙面点
     { id: "casualnessdelight:yorkshire_pudding", ratio: 10 },
-    { id: "mynethersdelight:egg_soup", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 3. 沙拉与凉拌菜
+    // ------------------------------------------------------------
+
+    // 混合蔬菜沙拉
+    { id: "farmersdelight:mixed_salad", ratio: 10 },
+    { id: "farm_and_charm:farmer_salad", ratio: 10 },
+    { id: "culturaldelights:hearty_salad", ratio: 10 },
+
+    // 叶菜、十字花科蔬菜沙拉
     { id: "veggiesdelight:broccoli_salad", ratio: 10 },
     { id: "veggiesdelight:cesar_salad", ratio: 10 },
     { id: "veggiesdelight:coleslaw", ratio: 10 },
+
+    // 根茎蔬菜沙拉
     { id: "veggiesdelight:turnip_salad", ratio: 10 },
-    { id: "veggiesdelight:garlic_stuffed_mushrooms", ratio: 10 },
-    { id: "veggiesdelight:stuffed_zucchini_boat", ratio: 10 },
-    { id: "veggiesdelight:pasta_with_broccoli", ratio: 10 },
-    { id: "veggiesdelight:garlic_rice_with_cauliflower", ratio: 10 },
-    { id: "veggiesdelight:stuffed_bellpepper", ratio: 10 },
+
+    // 土豆沙拉
+    { id: "moredelight:potato_salad", ratio: 10 },
+    { id: "brewery:potato_salad", ratio: 10 },
+    { id: "rusticdelight:potato_salad", ratio: 10 },
+
+    // 肉类沙拉
+    { id: "moredelight:chicken_salad", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 4. 汤类 - 蔬菜、谷物与蛋
+    // ------------------------------------------------------------
+
+    // 土豆、洋葱汤
+    { id: "farm_and_charm:potato_soup", ratio: 10 },
+    { id: "farm_and_charm:onion_soup", ratio: 10 },
+
+    // 番茄汤
+    { id: "farm_and_charm:simple_tomato_soup", ratio: 10 },
+
+    // 谷物汤
+    { id: "farm_and_charm:barley_soup", ratio: 10 },
+
+    // 十字花科蔬菜汤
     { id: "veggiesdelight:broccoli_soup", ratio: 10 },
     { id: "veggiesdelight:cauliflower_soup", ratio: 10 },
+
+    // 蛋汤
+    { id: "mynethersdelight:egg_soup", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 5. 蔬菜料理 - 土豆、玉米及其他蔬菜
+    // ------------------------------------------------------------
+
+    // 土豆泥
+    { id: "brewery:mashed_potatoes", ratio: 10 },
     { id: "veggiesdelight:mashed_potatoes", ratio: 10 },
-    { id: "veggiesdelight:dandelion_and_eggs", ratio: 10 },
-    { id: "farm_and_charm:lamb_with_corn", ratio: 10 },
+
+    // 玉米料理
     { id: "corn_delight:creamed_corn", ratio: 10 },
     { id: "culturaldelights:creamed_corn", ratio: 10 },
-    { id: "farm_and_charm:cooked_cod", ratio: 10 },
-    { id: "farm_and_charm:chicken_wrapped_in_bacon", ratio: 10 },
-    { id: "farm_and_charm:baked_lamb_ham", ratio: 10 },
-    { id: "farm_and_charm:cooked_salmon", ratio: 10 },
+
+    // 茄子料理
+    { id: "culturaldelights:poached_eggplants", ratio: 10 },
     { id: "culturaldelights:smoked_eggplant", ratio: 10 },
     { id: "culturaldelights:smoked_white_eggplant", ratio: 10 },
 
-    // Asia / ordinary household and everyday prepared meals
-    { id: "alexsmobsdelight:turtle_soup", ratio: 10 },
-    { id: "alexsmobsdelight:cod_and_turtle_meat_congee", ratio: 10 },
-    { id: "casualnessdelight:potato_bobo_chicken", ratio: 10 },
-    { id: "casualnessdelight:cabbage_bobo_chicken", ratio: 10 },
-    { id: "casualnessdelight:chicken_bobo_chicken", ratio: 10 },
-    { id: "casualnessdelight:bowl_of_sweet_rice", ratio: 10 },
-    { id: "farmersdelight:fried_rice", ratio: 10 },
-    { id: "farmersdelight:bone_broth", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:maocai", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:pumpkin_porridge", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:tomato_egg_drop_soup", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:century_egg_congee", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:twice_cooked_pork", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:stir_fried_yellow_beef", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:beef_with_scrambled_eggs", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:stir_fried_three_fresh_vegetables", ratio: 10 },
-    { id: "kaleidoscope_cookery:country_style_mixed_vegetables", ratio: 10 },
-    { id: "kaleidoscope_cookery:tomato_beef_brisket_soup", ratio: 10 },
+    // 蘑菇、节瓜料理
+    { id: "veggiesdelight:garlic_stuffed_mushrooms", ratio: 10 },
+    { id: "veggiesdelight:stuffed_zucchini_boat", ratio: 10 },
+
+    // 彩椒填馅料理
+    { id: "rusticdelight:stuffed_bell_pepper_yellow", ratio: 10 },
+    { id: "rusticdelight:stuffed_bell_pepper_red", ratio: 10 },
+    { id: "rusticdelight:stuffed_bell_pepper_orange", ratio: 10 },
+    { id: "veggiesdelight:stuffed_bellpepper", ratio: 10 },
+
+    // 花椰菜与米饭料理
+    { id: "veggiesdelight:garlic_rice_with_cauliflower", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 6. 肉类料理 - 鸡肉、牛肉、羊肉及素肉
+    // ------------------------------------------------------------
+
+    // 鸡肉 - 烤制、填馅与培根包裹
+    { id: "farm_and_charm:roasted_chicken", ratio: 10 },
+    { id: "farm_and_charm:stuffed_chicken", ratio: 10 },
+    { id: "farm_and_charm:chicken_wrapped_in_bacon", ratio: 10 },
+
+    // 牛肉 - 炖煮、肉饼
+    { id: "farm_and_charm:goulash", ratio: 10 },
+    { id: "farm_and_charm:beef_patty_with_vegetables", ratio: 10 },
+
+    // 羊肉 - 烤制与配菜
+    { id: "farm_and_charm:lamb_with_corn", ratio: 10 },
+    { id: "farm_and_charm:baked_lamb_ham", ratio: 10 },
+
+    // 混合肉类、香肠与土豆
+    { id: "farm_and_charm:sausage_with_oat_patty", ratio: 10 },
+    { id: "farm_and_charm:potato_with_roast_meat", ratio: 10 },
+
+    // 植物蛋白、素肉替代品
+    { id: "kitchenkarrot:cooked_vegan_pork", ratio: 10 },
+    { id: "kitchenkarrot:cooked_vegan_beef", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 7. 鱼类料理
+    // ------------------------------------------------------------
+
+    // 鳕鱼
+    { id: "farm_and_charm:cooked_cod", ratio: 10 },
+
+    // 鲑鱼
+    { id: "farm_and_charm:cooked_salmon", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 8. 蛋类、豆谷制品与零食
+    // ------------------------------------------------------------
+
+    // 鸡蛋与野菜
+    { id: "veggiesdelight:dandelion_and_eggs", ratio: 10 },
+
+    // 大麦、土豆谷物饼
+    { id: "farm_and_charm:barley_patties_with_potatoes", ratio: 10 },
+
+    // 坚果零食
+    { id: "vintagedelight:roasted_peanut", ratio: 10 },
+
+
+    // ============================================================
+    // 亚洲 / 东亚与中式乡村日常饮食
+    // ============================================================
+
+    // ------------------------------------------------------------
+    // 1. 主食 - 米饭、炒饭与米制品
+    // ------------------------------------------------------------
+
+    // 普通米饭
     { id: "kaleidoscope_cookery:cooked_rice", ratio: 10 },
+
+    // 蛋炒饭、什锦炒饭
+    { id: "farmersdelight:fried_rice", ratio: 10 },
     { id: "kaleidoscope_cookery:egg_fried_rice", ratio: 10 },
-    { id: "kaleidoscope_cookery:scramble_egg_with_tomatoes", ratio: 10 },
-    { id: "kaleidoscope_cookery:braised_beef", ratio: 10 },
-    { id: "kaleidoscope_cookery:stir_fried_pork_with_peppers", ratio: 10 },
-    { reference: "lootjs:cooked_egg", ratio: 10 },
-    { id: "youkaisfeasts:tofu", ratio: 10 },
-    { id: "casualnessdelight:beef_noodles", ratio: 10 },
-    { id: "casualnessdelight:bowl_of_paper_wrapped_fish", ratio: 10 },
-    { id: "kaleidoscope_cookery:hot_dry_noodles", ratio: 10 },
-    { id: "kaleidoscope_cookery:oil_splashed_fish", ratio: 10 },
-    { id: "kitchenkarrot:curry_udon", ratio: 10 },
-    { id: "kaleidoscope_cookery:udon_noodle", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:wonton_noodles", ratio: 10 },
     { id: "kaleidoscope_chinesefood:yangzhou_fried_rice", ratio: 10 },
+
+    // 米制面点
     { id: "kaleidoscope_chinesefood:steamed_rice_rolls", ratio: 10 },
-    { id: "kaleidoscope_nether:braised_pork_rice", ratio: 10 },
+
+    // 甜米饭
+    { id: "casualnessdelight:bowl_of_sweet_rice", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 2. 主食 - 粥类
+    // ------------------------------------------------------------
+
+    // 南瓜、蔬菜粥
+    { id: "kaleidoscope_chinesefood:pumpkin_porridge", ratio: 10 },
+
+    // 皮蛋粥
+    { id: "kaleidoscope_chinesefood:century_egg_congee", ratio: 10 },
+
+    // 鱼肉、龟肉粥
+    { id: "alexsmobsdelight:cod_and_turtle_meat_congee", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 3. 主食 - 面条与汤面
+    // ------------------------------------------------------------
+
+    // 牛肉面
+    { id: "casualnessdelight:beef_noodles", ratio: 10 },
+    { id: "kaleidoscope_chinesefood:sauerkraut_beef_noodles", ratio: 10 },
+    { id: "kaleidoscope_cookery:beef_noodle", ratio: 10 },
+
+    // 羊肉烩面
+    { id: "kaleidoscope_cookery:hui_noodle", ratio: 10 },
+
+    // 猪肉、辣味面
+    { id: "kaleidoscope_chinesefood:pork_chili_noodles", ratio: 10 },
     { id: "kaleidoscope_nether:chongqing_noodles", ratio: 10 },
-    { id: "kaleidoscope_nether:mapo_tofu_rice", ratio: 10 },
-    { id: "kaleidoscope_nether:spicy_pot_rice", ratio: 10 },
-    { id: "kaleidoscope_cookery:braised_fish_rice_bowl", ratio: 10 },
+
+    // 鸡蛋、番茄面
+    { id: "kaleidoscope_chinesefood:tomato_egg_noodles", ratio: 10 },
+
+    // 馄饨面
+    { id: "kaleidoscope_chinesefood:wonton_noodles", ratio: 10 },
+
+    // 热干面
+    { id: "kaleidoscope_cookery:hot_dry_noodles", ratio: 10 },
+
+    // 乌冬面、咖喱乌冬
+    { id: "kaleidoscope_cookery:udon_noodle", ratio: 10 },
+    { id: "kitchenkarrot:curry_udon", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 4. 盖饭与米饭套餐 - 猪肉、牛肉、鱼肉、蔬菜
+    // ------------------------------------------------------------
+
+    // 猪肉盖饭
+    { id: "kaleidoscope_nether:braised_pork_rice", ratio: 10 },
     { id: "kaleidoscope_cookery:sweet_and_sour_pork_rice_bowl", ratio: 10 },
-    { id: "kaleidoscope_cookery:scramble_egg_with_tomatoes_rice_bowl", ratio: 10 },
     { id: "kaleidoscope_cookery:fish_flavored_shredded_pork_rice_bowl", ratio: 10 },
     { id: "kaleidoscope_cookery:stir_fried_pork_with_peppers_rice_bowl", ratio: 10 },
+    { id: "kaleidoscope_chinesefood:twice_cooked_pork_rice", ratio: 10 },
+
+    // 牛肉、牛杂盖饭
     { id: "kaleidoscope_cookery:braised_beef_rice_bowl", ratio: 10 },
     { id: "kaleidoscope_cookery:stir_fried_beef_offal_rice_bowl", ratio: 10 },
-    { id: "kaleidoscope_cookery:stuffed_tiger_skin_pepper", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:stir_fried_three_fresh_vegetables_rice", ratio: 10 },
     { id: "kaleidoscope_chinesefood:stir_fried_yellow_beef_rice", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:twice_cooked_pork_rice", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:sichuan_boiled_fish", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:sichuan_boiled_pork_slices", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:yellow_croaker_soup", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:stuffed_eggplant", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:sauerkraut_beef_noodles", ratio: 10 },
     { id: "kaleidoscope_chinesefood:beef_with_scrambled_eggs_rice", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:tomato_egg_noodles", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:pork_chili_noodles", ratio: 10 },
+
+    // 鱼肉盖饭
+    { id: "kaleidoscope_cookery:braised_fish_rice_bowl", ratio: 10 },
+
+    // 豆腐盖饭
+    { id: "kaleidoscope_nether:mapo_tofu_rice", ratio: 10 },
+
+    // 鸡蛋、蔬菜盖饭
+    { id: "kaleidoscope_cookery:scramble_egg_with_tomatoes_rice_bowl", ratio: 10 },
+    { id: "kaleidoscope_chinesefood:stir_fried_three_fresh_vegetables_rice", ratio: 10 },
+
+    // 香辣什锦盖饭
+    { id: "kaleidoscope_nether:spicy_pot_rice", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 5. 汤类 - 清汤、肉汤、鱼汤与蛋汤
+    // ------------------------------------------------------------
+
+    // 骨汤、高汤
+    { id: "farmersdelight:bone_broth", ratio: 10 },
+
+    // 猪肉、排骨汤
     { id: "kaleidoscope_nether:corn_carrot_pork_rib_soup", ratio: 10 },
+
+    // 牛肉、番茄汤
+    { id: "kaleidoscope_cookery:tomato_beef_brisket_soup", ratio: 10 },
+
+    // 鱼汤
+    { id: "kaleidoscope_chinesefood:yellow_croaker_soup", ratio: 10 },
+
+    // 龟肉汤
+    { id: "alexsmobsdelight:turtle_soup", ratio: 10 },
+
+    // 番茄蛋花汤
+    { id: "kaleidoscope_chinesefood:tomato_egg_drop_soup", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 6. 家常炒菜 - 蔬菜、鸡蛋与豆制品
+    // ------------------------------------------------------------
+
+    // 什锦炒蔬菜
+    { id: "kaleidoscope_chinesefood:stir_fried_three_fresh_vegetables", ratio: 10 },
+    { id: "kaleidoscope_cookery:country_style_mixed_vegetables", ratio: 10 },
+
+    // 番茄炒蛋
+    { id: "kaleidoscope_cookery:scramble_egg_with_tomatoes", ratio: 10 },
+
+    // 豆腐
+    { id: "youkaisfeasts:tofu", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 7. 家常肉菜 - 猪肉、牛肉与鸡肉
+    // ------------------------------------------------------------
+
+    // 猪肉 - 回锅、炒制
+    { id: "kaleidoscope_chinesefood:twice_cooked_pork", ratio: 10 },
+    { id: "kaleidoscope_cookery:stir_fried_pork_with_peppers", ratio: 10 },
+    { id: "kaleidoscope_cookery:sweet_and_sour_pork", ratio: 10 },
+    { id: "kaleidoscope_cookery:fish_flavored_shredded_pork", ratio: 10 },
+
+    // 猪肉 - 水煮、麻辣
+    { id: "kaleidoscope_chinesefood:sichuan_boiled_pork_slices", ratio: 10 },
+
+    // 牛肉 - 炖煮、红烧
+    { id: "kaleidoscope_cookery:braised_beef", ratio: 10 },
+
+    // 牛肉 - 小炒、蛋炒
+    { id: "kaleidoscope_chinesefood:stir_fried_yellow_beef", ratio: 10 },
+    { id: "kaleidoscope_chinesefood:beef_with_scrambled_eggs", ratio: 10 },
+
+    // 鸡肉 - 钵钵鸡（鸡肉、土豆、白菜）
+    { id: "casualnessdelight:chicken_bobo_chicken", ratio: 10 },
+    { id: "casualnessdelight:potato_bobo_chicken", ratio: 10 },
+    { id: "casualnessdelight:cabbage_bobo_chicken", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 8. 鱼类料理 - 蒸煮、油泼与麻辣
+    // ------------------------------------------------------------
+
+    // 纸包鱼
+    { id: "casualnessdelight:bowl_of_paper_wrapped_fish", ratio: 10 },
+
+    // 油泼鱼
+    { id: "kaleidoscope_cookery:oil_splashed_fish", ratio: 10 },
+
+    // 川味水煮鱼
+    { id: "kaleidoscope_chinesefood:sichuan_boiled_fish", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 9. 蔬菜料理 - 茄子、辣椒与填馅蔬菜
+    // ------------------------------------------------------------
+
+    // 茄子填馅
+    { id: "kaleidoscope_chinesefood:stuffed_eggplant", ratio: 10 },
+
+    // 虎皮椒填馅
+    { id: "kaleidoscope_cookery:stuffed_tiger_skin_pepper", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 10. 什锦烩菜与复合料理
+    // ------------------------------------------------------------
+
+    // 麻辣烫、冒菜
+    { id: "kaleidoscope_chinesefood:maocai", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 11. 蛋类 - 简单熟食
+    // ------------------------------------------------------------
+
+    // 熟鸡蛋
+    { reference: "lootjs:cooked_egg", ratio: 10 },
+
+    // 茶叶蛋
+    { id: "kaleidoscope_cookery:tea_egg", ratio: 10 },
+
 ];
+
 
 const village_plains_prepared_food = [
-    // Common: independently formed / portioned / ready-to-eat products
-    { id: "farmersdelight:cabbage_rolls", ratio: 10 },
-    { id: "kitchenkarrot:flower_cake", ratio: 10 },
-    { id: "kitchenkarrot:seed_pie", ratio: 10 },
-    { id: "kitchenkarrot:chinese_crepe", ratio: 10 },
-    { id: "vanillacookbook:trail_mix", ratio: 10 },
-    { id: "farm_and_charm:oat_pancake", ratio: 10 },
-    { id: "brewery:sausage", ratio: 10 },
-    { id: "veggiesdelight:cooked_vegetarian_patty", ratio: 10 },
+    { id: "empty", ratio: 1 },
 
-    { id: "kitchenkarrot:rice_cake", ratio: 10 },
-    { id: "farmersdelight:dumplings", ratio: 10 },
-    { id: "kaleidoscope_cookery:shengjian_mantou", ratio: 10 },
-    // { id: "kaleidoscope_cookery:zongzi", ratio: 10 },
-    { id: "kaleidoscope_cookery:dumpling", ratio: 10 },
-    { id: "kaleidoscope_cookery:baozi", ratio: 10 },
-    { id: "kaleidoscope_cookery:mantou", ratio: 10 },
-    { id: "kaleidoscope_cookery:cooked_meatball", ratio: 10 },
-    { id: "youkaisfeasts:bun", ratio: 10 },
-    { id: "youkaisfeasts:pork_rice_ball", ratio: 10 },
-    { id: "rusticdelight:spring_rolls", ratio: 10 },
-    { id: "rusticdelight:fried_dumplings", ratio: 10 },
-    { id: "casualnessdelight:roast_gluten", ratio: 10 },
-    { id: "fruitsdelight:pear_with_rock_sugar", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:sichuan_wonton", ratio: 10 },
+    // ============================================================
+    // 欧洲 / 西式独立成型食品
+    // ============================================================
 
-    // Special foods whose identity is more strongly an independent prepared product
+    // ------------------------------------------------------------
+    // 1. 烘焙主食 - 馅饼、派与咸挞
+    // ------------------------------------------------------------
+
+    // 南瓜、种子馅饼
     { id: "minecraft:pumpkin_pie", ratio: 10 },
+    { id: "kitchenkarrot:seed_pie", ratio: 10 },
+
+    // 鸡蛋、奶酪与蔬菜咸挞
     { id: "casualnessdelight:quiche_lorraine", ratio: 10 },
+    { id: "veggiesdelight:zucchini_quiche", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 2. 烘焙主食 - 披萨与千层面
+    // ------------------------------------------------------------
+
+    // 普通披萨、盛宴披萨
     { id: "brewinandchewin:pizza", ratio: 10 },
-    { id: "kitchenkarrot:feast_pizza", ratio: 10 },
     { id: "vanillacookbook:pizza", ratio: 10 },
+    { id: "kitchenkarrot:feast_pizza", ratio: 10 },
+
+    // 奶酪、肉类披萨
     { id: "vintagedelight:cheese_pizza", ratio: 10 },
     { id: "vintagedelight:meat_pizza", ratio: 10 },
+
+    // 植物性披萨
     { id: "veggiesdelight:vegan_pizza", ratio: 10 },
-    { id: "veggiesdelight:zucchini_quiche", ratio: 10 },
+
+    // 意式千层面切片
     { id: "veggiesdelight:lasagna_slice", ratio: 10 },
 
+    // ------------------------------------------------------------
+    // 3. 面点 - 煎饼与糕点
+    // ------------------------------------------------------------
+
+    // 燕麦煎饼
+    { id: "farm_and_charm:oat_pancake", ratio: 10 },
+
+    // 花卉糕点
+    { id: "kitchenkarrot:flower_cake", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 4. 肉类熟食 - 香肠、火腿与冷切肉
+    // ------------------------------------------------------------
+
+    // 香肠
+    { id: "brewery:sausage", ratio: 10 },
+
+    // 火腿切片
+    { id: "kaleidoscope_cookery:cold_cut_ham_slices", ratio: 10 },
+
+    // 冷切烤肉
+    { id: "kaleidoscope_cookery:cold_roasted_meat", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 5. 蔬菜、植物蛋白与独立成型食品
+    // ------------------------------------------------------------
+
+    // 卷心菜肉卷或菜卷
+    { id: "farmersdelight:cabbage_rolls", ratio: 10 },
+
+    // 素食肉饼
+    { id: "veggiesdelight:cooked_vegetarian_patty", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 6. 便携零食 - 坚果与混合干粮
+    // ------------------------------------------------------------
+
+    // 混合坚果、干果
+    { id: "vanillacookbook:trail_mix", ratio: 10 },
+
+
+    // ============================================================
+    // 亚洲 / 中式与东亚独立成型食品
+    // ============================================================
+
+    // ------------------------------------------------------------
+    // 1. 面点 - 包子、馒头与生煎
+    // ------------------------------------------------------------
+
+    // 包子、馒头
+    { id: "kaleidoscope_cookery:baozi", ratio: 10 },
+    { id: "kaleidoscope_cookery:mantou", ratio: 10 },
+    { id: "youkaisfeasts:bun", ratio: 10 },
+
+    // 生煎馒头
+    { id: "kaleidoscope_cookery:shengjian_mantou", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 2. 面点 - 饺子、馄饨与春卷
+    // ------------------------------------------------------------
+
+    // 水饺
+    { id: "farmersdelight:dumplings", ratio: 10 },
+    { id: "kaleidoscope_cookery:dumpling", ratio: 10 },
+    { id: "dumplings_delight:pork_cabbage_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:pork_celery_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:pork_potato_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:pork_fennel_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:tomato_egg_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:beef_tomato_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:mutton_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:chicken_mushroom_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:cod_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:salmon_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:eggplant_egg_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:mushroom_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:garlic_chive_egg_boiled_dumpling", ratio: 2 },
+    { id: "dumplings_delight:dandelion_leaf_boiled_dumpling", ratio: 2 },
+
+
+    // 煎饺
+    { id: "rusticdelight:fried_dumplings", ratio: 10 },
+
+    // 馄饨
+    { id: "kaleidoscope_chinesefood:sichuan_wonton", ratio: 10 },
+    { id: "dumplings_delight:pork_carrot_wonton", ratio: 2 },
+    { id: "dumplings_delight:pork_mushroom_wonton", ratio: 2 },
+    { id: "dumplings_delight:pork_cabbage_wonton", ratio: 2 },
+
+    // 春卷
+    { id: "rusticdelight:spring_rolls", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 3. 面点 - 煎饼与卷饼
+    // ------------------------------------------------------------
+
+    // 中式煎饼
+    { id: "kitchenkarrot:chinese_crepe", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 4. 米制食品 - 米糕、饭团与米卷
+    // ------------------------------------------------------------
+
+    // 米糕
+    { id: "kitchenkarrot:rice_cake", ratio: 10 },
+
+    // 猪肉饭团
+    { id: "youkaisfeasts:pork_rice_ball", ratio: 10 },
+
+    // 红米肠粉、米卷
     { id: "kaleidoscope_chinesefood:red_rice_roll", ratio: 10 },
+
+    // 粽子（原始配置中禁用）
+    // { id: "kaleidoscope_cookery:zongzi", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 5. 肉类熟食 - 肉丸与烤串
+    // ------------------------------------------------------------
+
+    // 熟肉丸
+    { id: "kaleidoscope_cookery:cooked_meatball", ratio: 10 },
+
+    // 日式烤鸡串
     { id: "kaleidoscope_cookery:yakitori", ratio: 10 },
-    { id: "kaleidoscope_cookery:candied_potato", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 6. 植物蛋白与蔬菜糕点
+    // ------------------------------------------------------------
+
+    // 烤面筋
+    { id: "casualnessdelight:roast_gluten", ratio: 10 },
+
+    // 萝卜糕
     { id: "veggiesdelight:turnip_cake", ratio: 10 },
 
-    { id: "kaleidoscope_cookery:cold_cut_ham_slices", ratio: 10 },
-    { id: "kaleidoscope_cookery:cold_roasted_meat", ratio: 10 },
+    // ------------------------------------------------------------
+    // 7. 甜食 - 糖制水果与根茎
+    // ------------------------------------------------------------
+
+    // 冰糖炖梨
+    { id: "fruitsdelight:pear_with_rock_sugar", ratio: 10 },
+
+    // 拔丝土豆
+    { id: "kaleidoscope_cookery:candied_potato", ratio: 10 },
+
+    // 牛皮糖
+    { id: "kaleidoscope_cookery:sticky_candy", ratio: 10 },
 ];
+
 
 const village_plains_dish = [
-    // Higher-value / special European meals
+    { id: "empty", ratio: 1 },
+
+    // ============================================================
+    // 欧洲 / 西式正式菜肴与高价值料理
+    // ============================================================
+
+    // ------------------------------------------------------------
+    // 1. 汤类 - 蔬菜汤、肉汤与炖汤
+    // ------------------------------------------------------------
+
+    // 洋葱、南瓜汤
     { id: "farmersdelight:onion_soup", ratio: 10 },
     { id: "farmersdelight:pumpkin_soup", ratio: 10 },
-    { id: "farmersdelight:chicken_soup", ratio: 10 },
-    { id: "farmersdelight:beef_stew", ratio: 10 },
-    { id: "farmersdelight:stuffed_pumpkin", ratio: 10 },
-    { id: "farmersdelight:shepherds_pie", ratio: 10 },
-    { id: "farmersdelight:roast_chicken", ratio: 10 },
-    { id: "farmersdelight:vegetable_noodles", ratio: 10 },
-    { id: "farmersdelight:ratatouille", ratio: 10 },
-    { id: "farm_and_charm:farmers_breakfast", ratio: 10 },
-    { id: "moredelight:creamy_pasta_with_chicken_cuts", ratio: 10 },
-    { id: "moredelight:creamy_pasta_with_ham", ratio: 10 },
-    { id: "vintagedelight:cucumber_salad", ratio: 10 },
-    { id: "culturaldelights:eggplant_parmesan", ratio: 10 },
-    { id: "rusticdelight:bell_pepper_pasta", ratio: 10 },
-    { id: "rusticdelight:bell_pepper_medley", ratio: 10 },
-    { id: "veggiesdelight:garlic_chicken_stew", ratio: 10 },
-    { id: "veggiesdelight:roasted_vegetables", ratio: 10 },
-    { id: "veggiesdelight:stuffed_bellpeppers_block", ratio: 10 },
-    { id: "corn_delight:cornbread_stuffing", ratio: 10 },
+
+    // 玉米汤
     { id: "corn_delight:corn_soup", ratio: 10 },
-    { id: "veggiesdelight:cacciatore", ratio: 10 },
-    { id: "veggiesdelight:lasagna_pan", ratio: 10 },
-    { id: "veggiesdelight:garlic_baked_cod", ratio: 10 },
+
+    // 鸡肉汤
+    { id: "farmersdelight:chicken_soup", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 2. 炖菜 - 牛肉、鸡肉与根茎蔬菜
+    // ------------------------------------------------------------
+
+    // 牛肉炖菜
+    { id: "farmersdelight:beef_stew", ratio: 10 },
     { id: "veggiesdelight:turnip_beef_stew", ratio: 10 },
 
-    // Higher-value / special Asian meals
-    { id: "alexsmobsdelight:turtle_jelly", ratio: 10 },
-    { id: "alexsmobsdelight:catfish_stew", ratio: 10 },
-    { id: "alexsmobsdelight:turtle_meat_fried_rice", ratio: 10 },
-    { id: "casualnessdelight:bobo_chicken", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:four_joy_meatballs", ratio: 10 },
-    { id: "kaleidoscope_chinesefood:yellow_croaker_tofu_soup", ratio: 10 },
-    { id: "kaleidoscope_cookery:spicy_blood_stew", ratio: 10 },
-    { id: "kaleidoscope_cookery:spicy_rabbit_head", ratio: 10 },
-    { id: "kaleidoscope_cookery:spicy_chicken", ratio: 10 },
-    { id: "kaleidoscope_cookery:fried_caterpillar", ratio: 10 },
-    { id: "kaleidoscope_cookery:four_joy_meatball_soup", ratio: 10 },
-    { id: "kaleidoscope_cookery:braised_pork_ribs", ratio: 10 },
-    { id: "kaleidoscope_cookery:buddha_jumps_over_the_wall", ratio: 10 },
-    { id: "kaleidoscope_nether:luosifen", ratio: 10 },
-    { id: "kaleidoscope_nether:pepper_pork_belly_chicken_soup", ratio: 10 },
-    { id: "kaleidoscope_nether:couples_lung_slice", ratio: 10 },
-    { id: "kaleidoscope_nether:braised_lion_head", ratio: 10 },
-    { id: "youkaisfeasts:longevity_noodles", ratio: 10 },
-    { id: "youkaisfeasts:tuscan_salmon", ratio: 10 },
-    { id: "youkaisfeasts:lions_head", ratio: 10 },
-    // { id: "youkaisfeasts:rice_powder_pork", ratio: 10 },
-    { id: "youkaisfeasts:sauce_grilled_fish", ratio: 10 },
-    { id: "vintagedelight:pickle_soup", ratio: 10 },
-    { id: "vintagedelight:ghostly_chili", ratio: 10 },
-    { id: "vintagedelight:pad_thai", ratio: 10 },
-    { id: "fruitsdelight:orange_chicken", ratio: 10 },
+    // 鸡肉炖菜
+    { id: "veggiesdelight:garlic_chicken_stew", ratio: 10 },
+    { id: "veggiesdelight:cacciatore", ratio: 10 },
+
+    // 无花果炖鸡
     { id: "fruitsdelight:fig_chicken_stew", ratio: 10 },
-    { id: "fruitsdelight:orange_marinated_pork", ratio: 10 },
-    { id: "veggiesdelight:potato_noodles", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 3. 主食 - 意面、焗面与千层面
+    // ------------------------------------------------------------
+
+    // 鸡肉奶油意面
+    { id: "moredelight:creamy_pasta_with_chicken_cuts", ratio: 10 },
+
+    // 火腿奶油意面
+    { id: "moredelight:creamy_pasta_with_ham", ratio: 10 },
+
+    // 蔬菜意面
+    { id: "farmersdelight:vegetable_noodles", ratio: 10 },
+    { id: "rusticdelight:bell_pepper_pasta", ratio: 10 },
+
+    // 意式千层面
+    { id: "veggiesdelight:lasagna_pan", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 4. 烘焙主菜 - 肉馅派、填馅蔬菜与焗菜
+    // ------------------------------------------------------------
+
+    // 牧羊人派
+    { id: "farmersdelight:shepherds_pie", ratio: 10 },
+
+    // 填馅南瓜
+    { id: "farmersdelight:stuffed_pumpkin", ratio: 10 },
+
+    // 填馅彩椒
+    { id: "veggiesdelight:stuffed_bellpeppers_block", ratio: 10 },
+
+    // 茄子帕尔马干酪焗菜
+    { id: "culturaldelights:eggplant_parmesan", ratio: 10 },
+
+    // 玉米面包填馅
+    { id: "corn_delight:cornbread_stuffing", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 5. 肉类主菜 - 烤鸡与早餐拼盘
+    // ------------------------------------------------------------
+
+    // 烤鸡
+    { id: "farmersdelight:roast_chicken", ratio: 10 },
+
+    // 农夫早餐拼盘
+    { id: "farm_and_charm:farmers_breakfast", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 6. 鱼类主菜 - 烤鱼与奶油鱼料理
+    // ------------------------------------------------------------
+
+    // 蒜香烤鳕鱼
+    { id: "veggiesdelight:garlic_baked_cod", ratio: 10 },
+
+    // 托斯卡纳风味鲑鱼
+    { id: "youkaisfeasts:tuscan_salmon", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 7. 蔬菜料理 - 烤蔬菜、炖蔬菜与沙拉
+    // ------------------------------------------------------------
+
+    // 法式炖蔬菜
+    { id: "farmersdelight:ratatouille", ratio: 10 },
+
+    // 烤制混合蔬菜
+    { id: "veggiesdelight:roasted_vegetables", ratio: 10 },
+
+    // 彩椒什锦
+    { id: "rusticdelight:bell_pepper_medley", ratio: 10 },
+
+    // 黄瓜沙拉
+    { id: "vintagedelight:cucumber_salad", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 8. 浓汤与特色炖菜
+    // ------------------------------------------------------------
+
+    // 腌黄瓜汤
+    { id: "vintagedelight:pickle_soup", ratio: 10 },
+
+    // 辣味炖菜
+    { id: "vintagedelight:ghostly_chili", ratio: 10 },
+
+
+    // ============================================================
+    // 亚洲 / 中式、东亚与东南亚正式菜肴
+    // ============================================================
+
+    // ------------------------------------------------------------
+    // 1. 主食 - 米饭、炒饭与烩饭
+    // ------------------------------------------------------------
+
+    // 龟肉炒饭
+    { id: "alexsmobsdelight:turtle_meat_fried_rice", ratio: 10 },
+
+    // 蔬菜米饭
     { id: "veggiesdelight:rice_and_vegetables", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 2. 主食 - 面条、米粉与节庆面食
+    // ------------------------------------------------------------
+
+    // 长寿面
+    { id: "youkaisfeasts:longevity_noodles", ratio: 10 },
+
+    // 柳州螺蛳粉
+    { id: "kaleidoscope_nether:luosifen", ratio: 10 },
+
+    // 泰式炒河粉
+    { id: "vintagedelight:pad_thai", ratio: 10 },
+
+    // 土豆面条
+    { id: "veggiesdelight:potato_noodles", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 3. 汤类 - 鱼汤、肉汤与复合滋补汤
+    // ------------------------------------------------------------
+
+    // 鲶鱼炖汤
+    { id: "alexsmobsdelight:catfish_stew", ratio: 10 },
+
+    // 黄花鱼豆腐汤
+    { id: "kaleidoscope_chinesefood:yellow_croaker_tofu_soup", ratio: 10 },
+
+    // 胡椒猪肚鸡汤
+    { id: "kaleidoscope_nether:pepper_pork_belly_chicken_soup", ratio: 10 },
+
+    // 四喜丸子汤
+    { id: "kaleidoscope_cookery:four_joy_meatball_soup", ratio: 10 },
+
+    // 佛跳墙
+    { id: "kaleidoscope_cookery:buddha_jumps_over_the_wall", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 4. 猪肉料理 - 红烧、凉拌与特色肉菜
+    // ------------------------------------------------------------
+
+    // 红烧排骨
+    { id: "kaleidoscope_cookery:braised_pork_ribs", ratio: 10 },
+
+    // 夫妻肺片
+    { id: "kaleidoscope_nether:couples_lung_slice", ratio: 10 },
+
+    // 橙香腌制猪肉
+    { id: "fruitsdelight:orange_marinated_pork", ratio: 10 },
+
+    // 粉蒸肉（原始配置中禁用）
+    // { id: "youkaisfeasts:rice_powder_pork", ratio: 10 },
+
+    // 东坡肉
+    { id: "kaleidoscope_cookery:dongpo_pork", ratio: 10 },
+    // ------------------------------------------------------------
+    // 5. 肉丸料理 - 狮子头与四喜丸子
+    // ------------------------------------------------------------
+
+    // 四喜丸子
+    { id: "kaleidoscope_chinesefood:four_joy_meatballs", ratio: 10 },
+
+    // 红烧狮子头
+    { id: "kaleidoscope_nether:braised_lion_head", ratio: 10 },
+
+    // 狮子头
+    { id: "youkaisfeasts:lions_head", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 6. 鸡肉料理 - 麻辣、凉拌与果香
+    // ------------------------------------------------------------
+
+    // 钵钵鸡
+    { id: "casualnessdelight:bobo_chicken", ratio: 10 },
+
+    // 辣子鸡
+    { id: "kaleidoscope_cookery:spicy_chicken", ratio: 10 },
+
+    // 橙香鸡肉
+    { id: "fruitsdelight:orange_chicken", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 7. 鱼类料理 - 酱烤鱼
+    // ------------------------------------------------------------
+
+    // 酱汁烤鱼
+    { id: "youkaisfeasts:sauce_grilled_fish", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 8. 麻辣特色料理 - 血旺、兔肉与其他食材
+    // ------------------------------------------------------------
+
+    // 麻辣血旺
+    { id: "kaleidoscope_cookery:spicy_blood_stew", ratio: 10 },
+
+    // 麻辣兔头
+    { id: "kaleidoscope_cookery:spicy_rabbit_head", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 9. 特殊蛋白料理 - 昆虫
+    // ------------------------------------------------------------
+
+    // 油炸毛毛虫
+    { id: "kaleidoscope_cookery:fried_caterpillar", ratio: 10 },
+
+    // ------------------------------------------------------------
+    // 10. 传统甜品与药膳
+    // ------------------------------------------------------------
+
+    // 龟苓膏
+    { id: "alexsmobsdelight:turtle_jelly", ratio: 10 },
 ];
+
 
 // Food pools are intentionally semantic rather than a strict value ladder:
 // preserved/prepared describe form; simple/dish preserve the former common/special social tier.
@@ -918,9 +1413,6 @@ const village_plains_bakery_baking_material = [
     },
 ]
 
-const village_plains_everyone_staple = [
-    { groupName: "common",  groupWeight: 100, min: 2, max: 3, items: village_plains_staple },
-]
 
 const village_plains_household_types = [
     "smallholder_farming",
@@ -943,6 +1435,10 @@ const village_plains_household_types = [
 // weight 矩阵中的数字均为同一行内各组的相对权重；
 // 同一次抽取只会命中一个组，多次调用同一矩阵时不同组可以共存。
 // =================================================================
+
+const village_plains_everyone_staple = [
+    { groupName: "common",  groupWeight: 100, min: 2, max: 3, items: village_plains_staple },
+]
 
 const village_plains_produce_matrix = {
     matrixType: "groupToPool",
@@ -969,11 +1465,11 @@ const village_plains_market_possessions_matrix = {
     matrixType: "groupToPool",
     rows: village_plains_household_types,
     columns: [
-        { groupName: "household_goods",       min: 1, max: 1, items: village_plains_household_trade_goods },
-        { groupName: "productive_goods",      min: 1, max: 1, damage: [0.5, 0.9], items: village_plains_productive_trade_goods },
-        { groupName: "textile_leather_goods", min: 1, max: 1, items: village_plains_textile_leather_trade_goods },
-        { groupName: "knowledge_goods",        min: 1, max: 2, items: village_plains_knowledge_trade_goods },
-        { groupName: "security_goods",         min: 1, max: 1, damage: [0.5, 0.9], items: village_plains_security_trade_goods },
+        { groupName: "household_goods",       min: 1, max: 1, items: village_household_trade_goods },
+        { groupName: "productive_goods",      min: 1, max: 1, damage: [0.5, 0.9], items: village_productive_trade_goods },
+        { groupName: "textile_leather_goods", min: 1, max: 1, items: village_textile_leather_trade_goods },
+        { groupName: "knowledge_goods",        min: 1, max: 2, items: village_knowledge_trade_goods },
+        { groupName: "security_goods",         min: 1, max: 1, damage: [0.5, 0.9], items: village_security_trade_goods },
         { groupName: "liquid_wealth",          min: 1, max: 3, items: [{ id: "minecraft:emerald", ratio: 10 }] },
         { groupName: "empty",                                  items: [{ id: "empty" }] },
     ],
@@ -1067,8 +1563,8 @@ const village_plains_household_weight_matrix = {
     rows: village_plains_household_types,
 
     // 最终住宅原型抽取权重；与 village_plains_household_types 的行顺序一一对应。
-    //                         smallholder_farming  smallholder_life  large_scale_farming  large_scale_farm_life  non_farm_households
-    weights: [                              3,                 2,                   2,                      1,                    2 ],
+    //         smallholder_farming  smallholder_life  large_scale_farming  large_scale_farm_life  non_farm_households
+    weights: [      3,                 2,                   2,                      1,                    2,         ],
     prefix: "village_plains",
     contentPattern: "{prefix}_{row}_content",
     extra: [

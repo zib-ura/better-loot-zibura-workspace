@@ -29,7 +29,8 @@ def create_datapack_clear_entries(
         constants_dir,
         output_data_dir,
         version="1.21.1",
-        loader=None
+        loader=None,
+        output_resolver=None,
 ):
     constants_dir = Path(constants_dir)
     output_data_dir = Path(output_data_dir)
@@ -69,7 +70,7 @@ def create_datapack_clear_entries(
     for entry in tables_to_clear:
         namespace, path = entry.split(":", 1)
         target_path = (
-            output_data_dir
+            (output_resolver(namespace) if output_resolver else output_data_dir)
             / namespace
             / table_dir
             / f"{path}.json"
@@ -82,7 +83,7 @@ def create_datapack_clear_entries(
     for entry in modifiers_to_remove:
         namespace, path = entry.split(":", 1)
         target_path = (
-            output_data_dir
+            (output_resolver(namespace) if output_resolver else output_data_dir)
             / namespace
             / modifier_dir
             / f"{path}.json"
@@ -96,7 +97,7 @@ def create_datapack_clear_entries(
         namespace, path = entry.split(":", 1)
 
         target_path = (
-                output_data_dir
+                (output_resolver(namespace) if output_resolver else output_data_dir)
                 / namespace
                 / recipe_dir
                 / f"{path}.json"

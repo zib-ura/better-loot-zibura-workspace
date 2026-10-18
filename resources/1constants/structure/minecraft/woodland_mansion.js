@@ -262,35 +262,47 @@ const woodland_mansion_alcohol = [
 ];
 
 const woodland_mansion_all_village_house_special_dish = [
+    // {
+    //     groupName: "village_desert_dish",
+    //     groupWeight: 10,
+    //     min: 1, max: 1,
+    //     items: village_desert_dish
+    // },
+    // {
+    //     groupName: "village_desert_dish",
+    //     groupWeight: 10,
+    //     min: 1, max: 1,
+    //     items: village_desert_dish
+    // },
     {
-        groupName: "desert_house",
-        groupWeight: 10, 
-        min: 1, max: 1,
-        items: village_desert_dish_special
-    },
-    {
-        groupName: "plains_house_europe",
+        groupName: "village_plains_prepared_food",
         groupWeight: 10, 
         min: 1, max: 1,
         items: village_plains_prepared_food
     },
     {
-        groupName: "plains_house_asia",
+        groupName: "village_plains_dish",
         groupWeight: 10, 
         min: 1, max: 1,
         items: village_plains_dish
     },
+    // {
+    //     groupName: "savanna_house",
+    //     groupWeight: 10,
+    //     min: 1, max: 1,
+    //     items: village_savanna_dish_special
+    // },
     {
-        groupName: "savanna_house",
-        groupWeight: 10, 
+        groupName: "village_snowy_dish",
+        groupWeight: 10,
         min: 1, max: 1,
-        items: village_savanna_dish_special
+        items: village_snowy_dish
     },
     {
-        groupName: "snowy_house",
-        groupWeight: 10, 
+        groupName: "village_snowy_prepared_food",
+        groupWeight: 10,
         min: 1, max: 1,
-        items: village_snowy_dish_special
+        items: village_snowy_prepared_food
     },
     // {
     //     groupName: "taiga_house",
@@ -331,29 +343,29 @@ const woodland_mansion_all_village_house_special_dish = [
 ];
 
 const woodland_mansion_all_village_house_common_dish = [
-    {
-        groupName: "desert_house",
-        groupWeight: 10, 
-        min: 2, max: 3,
-        items: village_desert_dish_common
-    },
+    // {
+    //     groupName: "desert_house",
+    //     groupWeight: 10,
+    //     min: 2, max: 3,
+    //     items: village_desert_simple_food
+    // },
     {
         groupName: "plains_house_europe",
         groupWeight: 10, 
         min: 2, max: 3,
         items: village_plains_simple_food
     },
-    {
-        groupName: "savanna_house",
-        groupWeight: 10, 
-        min: 2, max: 3,
-        items: village_savanna_dish_common
-    },
+    // {
+    //     groupName: "savanna_house",
+    //     groupWeight: 10,
+    //     min: 2, max: 3,
+    //     items: village_savanna_dish_common
+    // },
     {
         groupName: "snowy_house",
         groupWeight: 10, 
         min: 2, max: 3,
-        items: village_snowy_dish_common
+        items: village_snowy_simple_food
     },
     // {
     //     groupName: "taiga_house",

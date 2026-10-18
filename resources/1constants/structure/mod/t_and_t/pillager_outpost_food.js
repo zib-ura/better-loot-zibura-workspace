@@ -28,11 +28,11 @@ const t_and_t_pillager_outpost_food_supply_content = [
     [t_and_t_pillager_outpost_equipment, 1, 1],
 
     // 平原村庄 (Plains)
-    [village_plains_dish, 1, 1, { matchBiome: "#minecraft:has_structure/village_plains" } ],
+    [village_plains_food, 1, 1, { matchBiome: "#minecraft:has_structure/village_plains" } ],
     [village_plains_drinks, 1, 2, { matchBiome: "#minecraft:has_structure/village_plains" } ],
 
     // 沙漠村庄 (Desert)
-    [village_desert_dish, 1, 1, { matchBiome: "#minecraft:has_structure/village_desert" } ],
+    [village_desert_food, 1, 1, { matchBiome: "#minecraft:has_structure/village_desert" } ],
     [village_desert_drinks, 1, 2, { matchBiome: "#minecraft:has_structure/village_desert" } ],
 
     // 热带草原村庄 (Savanna)
@@ -40,11 +40,11 @@ const t_and_t_pillager_outpost_food_supply_content = [
     [village_savanna_drinks, 1, 2, { matchBiome: "#minecraft:has_structure/village_savanna" } ],
 
     // 针叶林村庄 (Taiga)
-    [village_taiga_dish, 1, 1, { matchBiome: "#minecraft:has_structure/village_taiga" } ],
+    [village_taiga_food, 1, 1, { matchBiome: "#minecraft:has_structure/village_taiga" } ],
     [village_taiga_drinks, 1, 2, { matchBiome: "#minecraft:has_structure/village_taiga" } ],
 
     // 积雪平原村庄 (Snowy)
-    [village_snowy_dish, 1, 1, { matchBiome: "#minecraft:has_structure/village_snowy" } ],
+    [village_snowy_food, 1, 1, { matchBiome: "#minecraft:has_structure/village_snowy" } ],
     [village_snowy_drinks, 1, 2, { matchBiome: "#minecraft:has_structure/village_snowy" } ],
 
     // 恶地 (Badlands)
