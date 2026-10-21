@@ -208,5 +208,5 @@ const village_cherry_house_content = [
 
 const loot_village_cherry_house = [
     [village_cherry_house_content, 9],
-    [carpenterData.cherry, 1], 
+    [carpenter_cherry, 1],
 ];

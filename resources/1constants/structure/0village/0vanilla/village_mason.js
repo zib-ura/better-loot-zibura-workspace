@@ -363,7 +363,7 @@ const village_mason_content = [
     [village_desert_sandstone_glass, 2, 2, { matchBiome: "#minecraft:has_structure/village_desert" }],
     [village_badlands_terracotta, 2, 2, { matchBiome: "#minecraft:is_badlands" }],
     [village_beach_salt, 2, 2, { matchBiome: "#minecraft:is_beach" }],
-
+    [village_mangrove_mud, 2, 2, { matchBiome: "minecraft:mangrove_swamp" }],
 
 
     [village_mason_fuel, 2, 2],

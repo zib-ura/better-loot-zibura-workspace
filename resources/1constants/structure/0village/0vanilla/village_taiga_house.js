@@ -687,7 +687,7 @@ const village_taiga_household_weight_matrix = {
     contentPattern: "{prefix}_{row}_content",
 
     extra: [
-        [carpenterData.taiga, 1],
+        [carpenter_spruce, 1],
     ],
 
     output: "loot_village_taiga_house",

@@ -223,5 +223,5 @@ const village_swamp_house_content = [
 
 const loot_village_swamp_house = [
     [village_swamp_house_content, 9],
-    [carpenterData.swamp, 1], 
+    [carpenter_oak, 1],
 ];

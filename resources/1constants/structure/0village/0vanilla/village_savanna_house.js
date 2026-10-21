@@ -232,5 +232,5 @@ const village_savanna_house_content = [
 
 const loot_village_savanna_house = [
     [village_savanna_house_content, 9],
-    [carpenterData.savanna, 1], 
+    [carpenter_acacia, 1],
 ];

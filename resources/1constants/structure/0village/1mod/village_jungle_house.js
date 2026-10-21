@@ -393,6 +393,7 @@ const village_jungle_bakery_content = [
 
 const loot_village_jungle_house = [
     [village_jungle_house_content, 8],
-    [carpenterData.jungle, 1], 
+    [carpenter_jungle, 1],
+    [carpenter_bamboo, 1],
     [village_jungle_bakery_content, 1],
 ];

@@ -22,7 +22,7 @@ FILTER_KEYS = {
     "colors",
     "biome",
     "condition",
-    "village_shepherd_content",
+    # "village_shepherd_content",
     "POTIONS_1_20_1",
     "POTIONS_1_21_1",
     "currentMCVersion",
@@ -531,6 +531,31 @@ def dump_readable_json(value, file, indent=2):
     file.write(render(value) + "\n")
 
 
+# 新版 Java 模板 DSL：Python 只做语法转换，不在这里实例化模板。
+# param: 单个键，值为字符串数组或指向 registry 数组的字符串。
+# output: 可在任意层级出现，由 Java 在模板上下文中注册生成的键。
+# 注意：旧配置中的 item 模板可能仍使用标量 param，因此仅对显式
+# 使用 output 的新版调用做严格检查，避免转换历史文件时突然中断。
+def validate_output_template_calls(value, path="root"):
+    if isinstance(value, list):
+        for index, child in enumerate(value):
+            validate_output_template_calls(child, f"{path}[{index}]")
+    elif isinstance(value, dict):
+        if "template" in value and "output" in value:
+            if not isinstance(value["template"], str) or not isinstance(value["output"], str):
+                raise ValueError(f"{path}: template/output 必须为字符串")
+            if "param" in value:
+                params = value["param"]
+                if not isinstance(params, dict) or len(params) != 1:
+                    raise ValueError(f"{path}: param 必须恰好包含一个参数键")
+                argument = next(iter(params.values()))
+                if not (isinstance(argument, str) or
+                        (isinstance(argument, list) and all(isinstance(x, str) for x in argument))):
+                    raise ValueError(f"{path}: param 必须是字符串数组或数组 registry 引用")
+        for key, child in value.items():
+            validate_output_template_calls(child, f"{path}.{key}")
+
+
 # ----------------- 主流程处理 -----------------
 def convert_js_to_dict(js_code: str, source_name: str = "<unknown>") -> dict:
     tokens = tokenize_js(js_code)
@@ -538,7 +563,10 @@ def convert_js_to_dict(js_code: str, source_name: str = "<unknown>") -> dict:
     all_vars = parser.parse_all()
     # Matrix DSL is compiled by Java at datapack reload time.
 
-    return {k: v for k, v in all_vars.items() if k not in FILTER_KEYS}
+    converted = {k: v for k, v in all_vars.items() if k not in FILTER_KEYS}
+    # 保留嵌套 template/param/output 的原始结构供 Java 运行时处理。
+    validate_output_template_calls(converted, source_name)
+    return converted
 
 
 def process_folder(

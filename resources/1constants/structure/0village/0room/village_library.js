@@ -128,8 +128,6 @@ const village_library_content = [
 ];
 
 
-
-
 const loot_village_library = [
     [village_library_content, 1],
 ];

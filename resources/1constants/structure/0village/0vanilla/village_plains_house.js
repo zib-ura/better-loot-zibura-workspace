@@ -1465,31 +1465,33 @@ const village_plains_market_possessions_matrix = {
     matrixType: "groupToPool",
     rows: village_plains_household_types,
     columns: [
-        { groupName: "household_goods",       min: 1, max: 1, items: village_household_trade_goods },
-        { groupName: "productive_goods",      min: 1, max: 1, damage: [0.5, 0.9], items: village_productive_trade_goods },
-        { groupName: "textile_leather_goods", min: 1, max: 1, items: village_textile_leather_trade_goods },
-        { groupName: "knowledge_goods",        min: 1, max: 2, items: village_knowledge_trade_goods },
-        { groupName: "security_goods",         min: 1, max: 1, damage: [0.5, 0.9], items: village_security_trade_goods },
-        { groupName: "liquid_wealth",          min: 1, max: 3, items: [{ id: "minecraft:emerald", ratio: 10 }] },
-        { groupName: "empty",                                  items: [{ id: "empty" }] },
+        { groupName: "food_preparation",    min: 1, max: 1, items: village_plains_food_preparation_trade_goods },
+        { groupName: "food_storage",        min: 1, max: 2, items: village_plains_food_storage_trade_goods },
+        { groupName: "furniture",           min: 1, max: 1, items: village_plains_furniture_trade_goods },
+        { groupName: "decoration",          min: 1, max: 1, items: village_plains_decoration_trade_goods },
+        { groupName: "productive",          min: 1, max: 1, damage: [0.5, 0.9], items: village_plains_productive_trade_goods },
+        { groupName: "travel",              min: 1, max: 1, items: village_common_travel_trade_goods },
+        { groupName: "knowledge",           min: 1, max: 1, items: village_common_knowledge_trade_goods },
+        { groupName: "security",            min: 1, max: 1, damage: [0.5, 0.9], items: village_common_security_trade_goods },
+        { groupName: "liquid_wealth",       min: 1, max: 3, items: [{ id: "minecraft:emerald", ratio: 10 }] },
+        { groupName: "empty",                               items: [{ id: "empty" }] },
     ],
 
-    // 市场占有物结构权重
-    // household : 厨具、容器、照明等家庭耐用品
-    // productive: 农具、工具及生产性用品
-    // textile   : 纺织、皮革与随身收纳商品
-    // knowledge : 书写、地图、导航与文化用品
-    // security  : 武器、防具及家庭防卫用品
-    // emerald   : 尚未转化为商品的流动财富
-    // empty     : 本次没有额外市场资产
-    //
-    //                         household  productive  textile  knowledge  security  emerald  empty
+    // 与 produce_matrix / food_matrix 的家庭经济逻辑保持一致：
+    // 小农生产：重生产投入与储运，成品消费稀少；无装饰/知识/财富。
+    // 小农生活：重基本厨具、家居和储藏，少量生产用品；不以奢侈消费为主。
+    // 大农生产：较多生产资本、储运和现金，同时保留基本生活用品。
+    // 大农生活：较高生活水平，家居、装饰、厨具及财富明显提高。
+    // 非农家庭：市场依赖较高，以日常消费和加工/职业用品为主，
+    //           不默认所有非农家庭都偏好旅行、文化或奢侈品。
+    // 0 表示该类型不在此矩阵抽到该类；empty 表示此次没有额外商品。
+    //                        cooking storage furniture decoration productive travel knowledge security wealth empty
     weights: [
-        [                          20,          35,       15,         5,        5,       5,    15 ], // smallholder_farming
-        [                          35,          20,       20,         5,        5,       5,    10 ], // smallholder_life
-        [                          25,          30,       15,         5,        5,      15,     5 ], // large_scale_farming
-        [                          35,          15,       15,        10,        5,      15,     5 ], // large_scale_farm_life
-        [                          30,          10,       15,        20,        5,      15,     5 ], // non_farm_households
+        [                            0,     25,        5,         0,        55,     0,        0,       5,     0,   10 ], // smallholder_farming
+        [                           30,     20,       30,         0,        10,     0,        0,       0,     0,   10 ], // smallholder_life
+        [                            5,     20,       10,         0,        40,     0,        0,       5,    15,    5 ], // large_scale_farming
+        [                           20,     10,       25,        20,         0,     0,        5,       0,    15,    5 ], // large_scale_farm_life
+        [                           15,      5,       25,        15,         5,     5,       10,       0,    15,    5 ], // non_farm_households
     ],
     outputPattern: "village_plains_{row}_market_possessions",
 };
@@ -1568,7 +1570,7 @@ const village_plains_household_weight_matrix = {
     prefix: "village_plains",
     contentPattern: "{prefix}_{row}_content",
     extra: [
-        [carpenterData.plains, 1],
+        [carpenter_oak, 1],
         [village_plains_bakery_content, 1],
     ],
     output: "loot_village_plains_house",
